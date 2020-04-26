@@ -1,0 +1,16 @@
+require "runfile-tasks"
+require "byebug"
+require_relative 'lib/victor-cli'
+
+title   "Victor Developer Toolbelt"
+summary "Runfile tasks for building the Victor gem"
+version Victor::CLI::VERSION
+
+RunfileTasks::RubyGems.all 'victor-cli'
+RunfileTasks::Testing.rspec
+
+help   "Run interactive console"
+action :console, :c do
+  run "bundle exec bin/console"
+end
+
