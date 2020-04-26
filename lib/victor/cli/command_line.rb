@@ -1,5 +1,6 @@
-require 'victor-cli/commands/base'
-require 'victor-cli/commands/generate'
+require 'mister_bin'
+require_relative 'commands/base'
+require_relative 'commands/generate'
 
 module Victor
   module CLI
