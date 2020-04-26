@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'bin/victor-cli-generate' do
-  subject { CLI.router }
+describe 'victor generate' do
+  subject { CommandLine.router }
 
   context "without arguments" do
     it "shows short usage" do

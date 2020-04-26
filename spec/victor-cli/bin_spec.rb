@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'bin/victor-cli' do
-  subject { CLI.router }
+describe 'bin/victor' do
+  subject { CommandLine.router }
 
   it "shows list of commands" do
     expect{ subject.run }.to output_fixture('cli/commands')
@@ -9,7 +9,7 @@ describe 'bin/victor-cli' do
 
   context "on exception" do
     it "errors gracefuly" do
-      expect(`bin/victor-cli command that errors 2>&1`).to match_fixture('cli/exception')
+      expect(`bin/victor command that errors 2>&1`).to match_fixture('cli/exception')
     end
   end
 end

@@ -1,0 +1,19 @@
+Generate Ruby code from SVG
+
+Usage:
+  victor generate SVG_FILE [RUBY_FILE]
+  victor generate (-h|--help)
+
+Options:
+  -h --help
+    Show this help
+
+Parameters:
+  SVG_FILE
+    Input SVG file
+
+  RUBY_FILE
+    Output Ruby file
+
+Examples:
+  victor generate example.svg example.rb
