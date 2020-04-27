@@ -18,7 +18,7 @@ describe "victor generate" do
 
   context "with SVG_FILE" do
     it "outputs the converted ruby code to stdout" do
-      expect { subject.run ["generate", svg_file] }.to output_fixture('cli/generate/ruby-code')
+      expect { subject.run ["generate", svg_file] }.to output_fixture('cli/generate/ruby-code.rb')
     end
   end
 
@@ -26,7 +26,7 @@ describe "victor generate" do
     it "saves the converted ruby code" do
       Tempfile.create "ruby-code" do |file|
         subject.run ["generate", svg_file, file.path]
-        expect(File.read file.path).to match_fixture('cli/generate/ruby-code')
+        expect(File.read file.path).to match_fixture('cli/generate/ruby-code.rb')
       end
     end
   end

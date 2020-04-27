@@ -9,7 +9,7 @@ describe CodeGenerator do
     }
 
     it "converts the svg tree into ruby code" do
-      expect(subject.generate).to match_fixture('code_generator/basic')
+      expect(subject.generate).to match_fixture('code_generator/basic.rb')
     end
 
     context "with nested nodes" do
@@ -18,7 +18,7 @@ describe CodeGenerator do
       }
 
       it "converts the svg tree into ruby code" do
-        expect(subject.generate).to match_fixture('code_generator/nested-nodes')
+        expect(subject.generate).to match_fixture('code_generator/nested-nodes.rb')
       end
     end
   end

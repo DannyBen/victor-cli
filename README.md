@@ -6,7 +6,7 @@
 
 ---
 
-Command line interface for Victor, the SVG Library.
+Command line interface for [Victor][victor], the SVG Library.
 
 ---
 
@@ -40,3 +40,7 @@ Examples:
   victor generate example.svg example.rb
 
 ```
+
+---
+
+[victor]: https://github.com/DannyBen/victor
