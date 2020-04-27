@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date        = Date.today.to_s
   s.summary     = "CLI for Victor, the SVG Library"
   s.description = "CLI for Victor, the SVG Library"
-  s.authors     = ["Danny Ben Shitrit"]
+  s.authors     = ["Danny Ben Shitrit", "Max Brosnahan"]
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']
   s.executables = ['victor']
