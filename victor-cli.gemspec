@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'colsole', '~> 0.7'
   s.add_runtime_dependency 'victor', '~> 0.2'
+  s.add_runtime_dependency "nokogiri", ">=1.10.9"
 end
