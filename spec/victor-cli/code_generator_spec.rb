@@ -12,9 +12,9 @@ describe CodeGenerator do
       expected = <<~RUBY
         require "victor"
 
-        svg = Victor::SVG.new({ "a" => "b" })
+        svg = Victor::SVG.new a: "b"
         svg.build do
-          rect({ "x" => "10" })
+          rect x: "10"
         end
 
         svg.save "generated"
@@ -29,8 +29,8 @@ describe CodeGenerator do
 
       it "converts the svg tree into ruby code" do
         expected = <<~RUBY
-          g({ "a" => "b" }) do
-            rect({ "x" => "10" })
+          g a: "b" do
+            rect x: "10"
           end
         RUBY
         expect(subject.generate).to eql(expected)

@@ -26,7 +26,7 @@ module Victor
 
       def node_to_ruby(node)
         name, attrs, children = node
-        code = "#{name}(#{attrs_to_ruby(attrs)})"
+        code = "#{name} #{attrs_to_ruby(attrs)} "
         unless children.empty?
           code << " do\n"
           code << nodes_to_ruby(children)
@@ -40,7 +40,10 @@ module Victor
       end
 
       def attrs_to_ruby(attrs)
-        attrs.inspect
+        attrs.reduce([]) do |acc, (k, v)|
+          acc << "#{k.to_sym.inspect[1..]}: #{v.inspect}"
+          acc
+        end.join(",")
       end
 
       def root_to_ruby(node)
@@ -48,7 +51,7 @@ module Victor
         <<~RUBY
           require "victor"
 
-          svg = Victor::SVG.new(#{attrs_to_ruby(attrs)})
+          svg = Victor::SVG.new #{attrs_to_ruby(attrs)}
           svg.build do
             #{nodes_to_ruby(children)}
           end
