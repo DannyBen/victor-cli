@@ -1,3 +1,5 @@
+require "rufo"
+
 module Victor
   module CLI
     class CodeGenerator
@@ -6,7 +8,7 @@ module Victor
       end
 
       def generate
-        code_for_node(svg_tree)
+        Rufo::Formatter.format(code_for_node(svg_tree))
       end
 
       private
