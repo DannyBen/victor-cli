@@ -15,7 +15,16 @@ module Victor
         def run
           svg_file = File.read(args["SVG_FILE"])
           svg_tree = Parser.new(svg_file).parse
-          puts CodeGenerator.new(svg_tree).generate
+          code = CodeGenerator.new(svg_tree).generate
+          ruby_path = args["RUBY_FILE"]
+
+          if ruby_path.nil?
+            puts code
+          else
+            ruby_file = File.open(ruby_path, "w")
+            ruby_file.write(code)
+            ruby_file.close
+          end
         end
       end
     end
