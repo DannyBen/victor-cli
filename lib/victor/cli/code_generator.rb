@@ -41,7 +41,7 @@ module Victor
 
       def attrs_to_ruby(attrs)
         attrs.reduce([]) do |acc, (k, v)|
-          acc << "#{k.to_sym.inspect[1..]}: #{v.inspect}"
+          acc << "#{k.to_sym.inspect[1..-1]}: #{v.inspect}"
           acc
         end.join(",")
       end
