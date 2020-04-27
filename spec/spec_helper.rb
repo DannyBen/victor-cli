@@ -6,5 +6,7 @@ require 'bundler'
 Bundler.require :default, :development
 
 include Victor::CLI
-require_relative 'spec_mixin'
 
+RSpec.configure do |config|
+  config.fixtures_path = 'spec/approvals'
+end
