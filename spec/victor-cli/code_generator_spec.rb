@@ -3,7 +3,7 @@ require "spec_helper"
 describe CodeGenerator do
   subject { described_class.new svg_tree }
 
-  describe "#generate", :focus do
+  describe "#generate" do
     let(:svg_tree) {
       ["svg", { "a" => "b" }, [["rect", { "x" => "10" }, []]]]
     }

@@ -8,7 +8,7 @@ module Victor
         usage "victor generate (-h|--help)"
 
         param "SVG_FILE", "Input SVG file"
-        param "RUBY_FILE", "Output Ruby file"
+        param "RUBY_FILE", "Output Ruby file. Leave empty to write to stdout"
 
         example "victor generate example.svg example.rb"
 

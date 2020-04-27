@@ -13,7 +13,7 @@ Parameters:
     Input SVG file
 
   RUBY_FILE
-    Output Ruby file
+    Output Ruby file. Leave empty to write to stdout
 
 Examples:
   victor generate example.svg example.rb
