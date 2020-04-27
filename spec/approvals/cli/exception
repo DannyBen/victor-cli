@@ -1,6 +1,1 @@
-Unknown command
-
-Victor SVG Utilities
-
-Commands:
-  generate  Generate Ruby code from SVG
+Errno::ENOENT: No such file or directory @ rb_sysopen - no-such-file
