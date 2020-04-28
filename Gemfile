@@ -11,5 +11,6 @@ gem 'simplecov'
 
 # TODO: Remove me when the victor branch is released
 gem 'victor', github: 'dannyben/victor', branch: 'add/setup-method'
+# gem 'victor', path: '/vagrant/gems/victor'
 
 gemspec

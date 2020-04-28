@@ -1,6 +1,7 @@
 module Victor
   module CLI
     class RubyCode
+      include Victor::DSL
       attr_reader :code
 
       def initialize(code)
@@ -11,23 +12,9 @@ module Victor
         instance_eval code
       end
 
-      def svg
-        @svg ||= Victor::SVG.new
-      end
-
       def template(template)
         template = template.to_sym if built_in_templates.include? template
         svg.template = template
-      end
-
-      # DSL
-
-      def setup(attributes)
-        svg.setup attributes
-      end
-
-      def build(&block)
-        svg.build &block
       end
 
     private
