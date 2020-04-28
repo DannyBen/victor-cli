@@ -24,7 +24,7 @@ describe "victor generate" do
 
   context "with SVG_FILE RUBY_FILE" do
     let(:ruby_file) { 'spec/tmp/code.rb' }
-    before { system "rm #{ruby_file}" if File.exist? ruby_file }
+    before { File.unlink ruby_file if File.exist? ruby_file }
 
     it "saves the converted ruby code" do
       expect { subject.run ["generate", svg_file, ruby_file] }.to output_fixture('cli/generate/save')
