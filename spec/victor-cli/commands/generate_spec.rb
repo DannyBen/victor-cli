@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe "victor generate" do
   subject { CommandLine.router }
+  let(:svg_file) { 'spec/fixtures/pacman.svg' }
 
   context "without arguments" do
     it "shows short usage" do
@@ -15,22 +16,17 @@ describe "victor generate" do
     end
   end
 
-  context "with required arguments" do
-    let(:fixture_root) { File.join(__dir__, "..", "..", "fixtures") }
-    let(:svg_path) { File.join(fixture_root, "pacman.svg") }
-    let(:converted_path) { File.join(fixture_root, "pacman.rb") }
-    let(:converted_code) { File.read(converted_path) }
-
-    it "outputs the converted code to stdout if no ruby file is specified" do
-      expect {
-        subject.run ["generate", svg_path]
-      }.to output(converted_code).to_stdout
+  context "with SVG_FILE" do
+    it "outputs the converted ruby code to stdout" do
+      expect { subject.run ["generate", svg_file] }.to output_fixture('cli/generate/ruby-code.rb')
     end
+  end
 
-    it "outputs the converted code to specified file" do
-      Tempfile.create("ruby-code") do |file|
-        subject.run ["generate", svg_path, file.path]
-        expect(File.read(file.path)).to eql(converted_code)
+  context "with SVG_FILE RUBY_FILE" do
+    it "saves the converted ruby code" do
+      Tempfile.create "ruby-code" do |file|
+        subject.run ["generate", svg_file, file.path]
+        expect(File.read file.path).to match_fixture('cli/generate/ruby-code.rb')
       end
     end
   end

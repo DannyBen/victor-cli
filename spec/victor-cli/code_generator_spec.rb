@@ -9,31 +9,16 @@ describe CodeGenerator do
     }
 
     it "converts the svg tree into ruby code" do
-      expected = <<~RUBY
-        require "victor"
-
-        svg = Victor::SVG.new a: "b"
-        svg.build do
-          rect x: "10"
-        end
-
-        svg.save "generated"
-      RUBY
-      expect(subject.generate).to eql(expected)
+      expect(subject.generate).to match_fixture('code_generator/basic.rb')
     end
 
-    context "nested nodes are present" do
+    context "with nested nodes" do
       let(:svg_tree) {
         ["g", { "a" => "b" }, [["rect", { "x" => "10" }, []]]]
       }
 
       it "converts the svg tree into ruby code" do
-        expected = <<~RUBY
-          g a: "b" do
-            rect x: "10"
-          end
-        RUBY
-        expect(subject.generate).to eql(expected)
+        expect(subject.generate).to match_fixture('code_generator/nested-nodes.rb')
       end
     end
   end

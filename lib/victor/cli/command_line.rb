@@ -9,7 +9,7 @@ module Victor
         router = MisterBin::Runner.new version: VERSION,
           header: "Victor SVG Utilities"
 
-        router.route 'generate',    to: Commands::Generate
+        router.route 'generate', to: Commands::Generate
 
         router
       end

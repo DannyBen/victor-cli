@@ -2,81 +2,36 @@ require "spec_helper"
 
 describe Parser do
   subject { described_class.new svg }
+  let(:svg) { File.read "spec/fixtures/#{filename}.svg" }
 
   describe "#parse" do
-    let(:svg) {
-      <<~SVG
-        <svg a="b">
-          <rect width="30" />
-        </svg>
-      SVG
-    }
+    let(:filename) { 'basic' }
 
     it "converts the svg into a simple tree structure" do
-      expect(subject.parse).to eql([
-        "svg",
-        { "a" => "b" },
-        [
-          ["rect", { "width" => "30" }, []],
-        ],
-      ])
+      expect(subject.parse.inspect).to match_fixture('parser/basic')
     end
 
-    context "namespaced attributes are present" do
-      let(:svg) { '<svg><use xlink:href="#b"/></svg>' }
+    context "with namespaced attributes" do
+      let(:filename) { 'namespaced-args' }
 
       it "parses the attributes correctly" do
-        expect(subject.parse).to eql(
-          [
-            "svg",
-            {},
-            [["use", { "xlink:href" => "#b" }, []]],
-          ]
-        )
+        expect(subject.parse.inspect).to match_fixture('parser/namespaced-args')
       end
     end
 
-    context "text node is present" do
-      let(:svg) {
-        <<~SVG
-          <svg>
-            <text>
-              You are
-              <tspan font-weight="bold">not</tspan>
-              a banana
-            </text>
-          </svg>
-        SVG
-      }
+    context "with text node" do
+      let(:filename) { 'text-node' }
 
       it "parses the attributes correctly" do
-        expect(subject.parse).to eql(
-          [
-            "svg",
-            {},
-            [["text", {}, [
-              ["_", {}, "You are"],
-              ["tspan", { "font-weight" => "bold" }, [["_", {}, "not"]]],
-              ["_", {}, "a banana"],
-            ]]],
-          ]
-        )
+        expect(subject.parse.inspect).to match_fixture('parser/text-node')
       end
     end
 
-    context "style node is present" do
-      let(:svg) { "<svg><style>.test-class{color: red;}</style></svg>" }
+    context "with style node" do
+      let(:filename) { 'style-node' }
 
       it "parses the attributes correctly" do
-        expect(subject.parse).to eql(
-          [
-            "svg",
-            {},
-            [["style", {}, [
-              ["_", {}, ".test-class{color: red;}"],
-            ]]],
-          ]
-        )
+        expect(subject.parse.inspect).to match_fixture('parser/style-node')
       end
     end
   end

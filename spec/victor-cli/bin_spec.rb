@@ -9,7 +9,7 @@ describe 'bin/victor' do
 
   context "on exception" do
     it "errors gracefuly" do
-      expect(`bin/victor command that errors 2>&1`).to match_fixture('cli/exception')
+      expect(`bin/victor generate no-such-file 2>&1`).to match_fixture('cli/exception')
     end
   end
 end

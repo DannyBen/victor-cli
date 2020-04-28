@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date        = Date.today.to_s
   s.summary     = "CLI for Victor, the SVG Library"
   s.description = "CLI for Victor, the SVG Library"
-  s.authors     = ["Danny Ben Shitrit"]
+  s.authors     = ["Danny Ben Shitrit", "Max Brosnahan"]
   s.email       = 'db@dannyben.com'
   s.files       = Dir['README.md', 'lib/**/*.*']
   s.executables = ['victor']
@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'colsole', '~> 0.7'
   s.add_runtime_dependency 'victor', '~> 0.2'
-  s.add_runtime_dependency "nokogiri", ">=1.10.9"
-  s.add_runtime_dependency "rufo", ">=0.12.0"
+  s.add_runtime_dependency "nokogiri", "~> 1.10"
+  s.add_runtime_dependency "rufo", "~> 0.12"
 end

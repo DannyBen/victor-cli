@@ -5,8 +5,8 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, :development
 
-# require 'mister_bin'
-
 include Victor::CLI
-require_relative 'spec_mixin'
 
+RSpec.configure do |config|
+  config.fixtures_path = 'spec/approvals'
+end

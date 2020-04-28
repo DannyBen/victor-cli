@@ -2,8 +2,8 @@
 
 require "irb"
 require "irb/completion" 
-require "victor-cli"
+require "victor/cli"
 
-include Victor
+include Victor::CLI
 
 IRB.start
