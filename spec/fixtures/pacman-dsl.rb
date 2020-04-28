@@ -1,6 +1,6 @@
-svg.setup width: "140", height: "100", style: "background:#ddd"
+setup width: "140", height: "100", style: "background:#ddd"
 
-svg.build do
+build do
   rect x: "10", y: "10", width: "120", height: "80", rx: "10", fill: "#666"
   circle cx: "50", cy: "50", r: "30", fill: "yellow"
   circle cx: "58", cy: "32", r: "4", fill: "black"
