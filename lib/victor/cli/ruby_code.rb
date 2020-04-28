@@ -17,6 +17,11 @@ module Victor
         @svg ||= Victor::SVG.new
       end
 
+      def template(template)
+        template = template.to_sym if built_in_templates.include? template
+        svg.template = template
+      end
+
       # DSL
 
       def setup(attributes)
@@ -25,11 +30,6 @@ module Victor
 
       def build(&block)
         svg.build &block
-      end
-
-      def template(template)
-        template = template.to_sym if built_in_templates.include? template
-        svg.template = template
       end
 
     private
