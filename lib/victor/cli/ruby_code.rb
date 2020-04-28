@@ -1,5 +1,3 @@
-require "rufo"
-
 module Victor
   module CLI
     class RubyCode
