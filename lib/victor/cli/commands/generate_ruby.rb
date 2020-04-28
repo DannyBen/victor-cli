@@ -1,16 +1,16 @@
 module Victor
   module CLI
     module Commands
-      class Generate < Base
-        summary "Generate Ruby code from SVG"
+      class GenerateRuby < Base
+        summary "Convert SVG to Ruby code"
 
-        usage "victor generate SVG_FILE [RUBY_FILE]"
-        usage "victor generate (-h|--help)"
+        usage "victor to-ruby SVG_FILE [RUBY_FILE]"
+        usage "victor to-ruby (-h|--help)"
 
         param "SVG_FILE", "Input SVG file"
         param "RUBY_FILE", "Output Ruby file. Leave empty to write to stdout"
 
-        example "victor generate example.svg example.rb"
+        example "victor to-ruby example.svg example.rb"
 
         def run
           svg_file = File.read(args["SVG_FILE"])

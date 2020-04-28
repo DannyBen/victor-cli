@@ -1,0 +1,3 @@
+Usage:
+  victor to-ruby SVG_FILE [RUBY_FILE]
+  victor to-ruby (-h|--help)

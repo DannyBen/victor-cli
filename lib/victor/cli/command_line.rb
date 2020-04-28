@@ -1,6 +1,7 @@
 require 'mister_bin'
 require_relative 'commands/base'
-require_relative 'commands/generate'
+require_relative 'commands/generate_ruby'
+require_relative 'commands/generate_svg'
 
 module Victor
   module CLI
@@ -9,7 +10,8 @@ module Victor
         router = MisterBin::Runner.new version: VERSION,
           header: "Victor SVG Utilities"
 
-        router.route 'generate', to: Commands::Generate
+        router.route 'to-ruby', to: Commands::GenerateRuby
+        router.route 'to-svg',  to: Commands::GenerateSVG
 
         router
       end

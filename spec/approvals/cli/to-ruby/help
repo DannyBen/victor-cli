@@ -1,8 +1,8 @@
-Generate Ruby code from SVG
+Convert SVG to Ruby code
 
 Usage:
-  victor generate SVG_FILE [RUBY_FILE]
-  victor generate (-h|--help)
+  victor to-ruby SVG_FILE [RUBY_FILE]
+  victor to-ruby (-h|--help)
 
 Options:
   -h --help
@@ -16,4 +16,4 @@ Parameters:
     Output Ruby file. Leave empty to write to stdout
 
 Examples:
-  victor generate example.svg example.rb
+  victor to-ruby example.svg example.rb
