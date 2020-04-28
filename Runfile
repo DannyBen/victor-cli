@@ -14,3 +14,4 @@ action :console, :c do
   run "bundle exec bin/console"
 end
 
+require_relative 'debug.rb' if File.exist? 'debug.rb'

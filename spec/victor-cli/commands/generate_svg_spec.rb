@@ -20,14 +20,6 @@ describe "victor to-svg" do
     it "outputs the converted SVG code to stdout" do
       expect { subject.run ["to-svg", ruby_file] }.to output_fixture('cli/to-svg/svg-code.svg')
     end
-
-    context "when SVG_FILE contains invalid code" do
-      let(:ruby_file) { 'spec/fixtures/invalid-dsl.rb' }
-
-      it "aborts gracefully" do
-        expect { subject.run ["to-svg", ruby_file] }.to raise_error(/Invalid Victor Ruby code/)
-      end
-    end
   end
 
   context "with RUBY_FILE SVG_FILE" do
