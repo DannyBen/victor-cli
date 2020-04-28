@@ -20,6 +20,7 @@ module Victor
 
           if ruby_file
             File.write ruby_file, code
+            say "Saved #{ruby_file}"
           else
             puts code
           end
