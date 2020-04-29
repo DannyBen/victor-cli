@@ -61,7 +61,7 @@ module Victor
         filename = File.join templates_path, "#{name}.rb"
 
         unless File.exist? filename
-          raise "Template not found #{name}\nAvailable templates: #{available_templates}"
+          raise "Template not found #{name}\nAvailable templates: #{available_templates.join ', '}"
         end
 
         File.read filename
@@ -74,7 +74,7 @@ module Victor
       def available_templates
         @available_templates ||= Dir["#{templates_path}/*.rb"].map do |path|
           File.basename path, '.rb'
-        end.join ", "
+        end
       end
     end
   end
