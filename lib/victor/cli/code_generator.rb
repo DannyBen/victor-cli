@@ -68,7 +68,7 @@ module Victor
       end
 
       def templates_path
-        @templates_path ||= File.expand_path "templates", __dir__
+        @templates_path ||= File.expand_path "templates/import", __dir__
       end
 
       def available_templates
