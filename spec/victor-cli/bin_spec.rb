@@ -19,7 +19,7 @@ describe 'bin/victor' do
 
       it "errors gracefuly with backtrace info" do
         expect(`bin/victor to-svg #{script} 2>&1`)
-          .to match_fixture('cli/syntax-error-script')
+          .to match(/SyntaxError.*unterminated string meets end of file/m)
       end
     end
 
