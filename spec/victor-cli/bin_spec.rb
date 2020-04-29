@@ -18,6 +18,7 @@ describe 'bin/victor' do
       let(:script) { "spec/fixtures/syntax-error.rb" }
 
       it "errors gracefuly with backtrace info" do
+        # cannot use fixture here, since output varies between rubies
         expect(`bin/victor to-svg #{script} 2>&1`)
           .to match(/SyntaxError.*unterminated string meets end of file/m)
       end
@@ -27,9 +28,9 @@ describe 'bin/victor' do
       let(:script) { "spec/fixtures/other-error.rb" }
 
       it "errors gracefuly with backtrace info" do
+        # cannot use fixture here, since output varies between rubies
         expect(`bin/victor to-svg #{script} 2>&1`)
-          .to match_fixture('cli/other-error-script')
-          .except(/RubyCode:.*>/, 'RubyCode:...>')
+          .to match(/NameError.*undefined local variable or method .error./m)
       end
     end
   end
