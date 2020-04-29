@@ -1,0 +1,5 @@
+
+line 3    in (eval) > evaluate
+
+NameError
+undefined local variable or method `error' for #<Victor::CLI::RubyCode:...>

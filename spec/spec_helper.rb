@@ -11,4 +11,5 @@ Dir.mkdir 'spec/tmp' unless Dir.exist? 'spec/tmp'
 
 RSpec.configure do |config|
   config.fixtures_path = 'spec/approvals'
+  config.strip_ansi_escape = true
 end
