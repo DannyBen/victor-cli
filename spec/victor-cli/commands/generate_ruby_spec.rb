@@ -31,4 +31,11 @@ describe "victor to-ruby" do
       expect(File.read ruby_file).to match_fixture('cli/to-ruby/ruby-code.rb')
     end
   end
+
+  context "with SVG_FILE --template NAME" do
+    it "uses the specified template name" do
+      expect { subject.run %W[to-ruby #{svg_file} --template dsl] }
+        .to output_fixture('cli/to-ruby/template-dsl')
+    end
+  end
 end
