@@ -1,7 +1,8 @@
 # Render this template by running 'victor to-svg FILE'
 
-setup a: "b"
+setup %{attributes}
 
 build do
-  rect x: "10"
+  %{nodes}
 end
+

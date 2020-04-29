@@ -1,3 +1,4 @@
 <svg a="b">
+  <!-- Comments will be ignored -->
   <rect width="30" />
 </svg>

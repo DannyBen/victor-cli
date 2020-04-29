@@ -1,4 +1,5 @@
 Victor SVG Utilities
 
 Commands:
-  generate  Generate Ruby code from SVG
+  to-ruby  Convert SVG to Ruby code
+  to-svg   Convert Ruby code to SVG

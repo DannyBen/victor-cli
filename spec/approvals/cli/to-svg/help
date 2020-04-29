@@ -1,0 +1,24 @@
+Convert Ruby code to SVG
+
+Usage:
+  victor to-svg RUBY_FILE [SVG_FILE --template TEMPLATE]
+  victor to-svg (-h|--help)
+
+Options:
+  -t, --template TEMPLATE
+    Set SVG template
+    Can be: default, html, minimal, or a file path
+
+  -h --help
+    Show this help
+
+Parameters:
+  RUBY_FILE
+    Input Ruby file
+
+  SVG_FILE
+    Output SVG file. Leave empty to write to stdout
+
+Examples:
+  victor to-svg input.rb output.svg
+  victor to-svg input.rb --template minimal

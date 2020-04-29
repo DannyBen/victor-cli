@@ -1,0 +1,25 @@
+Convert SVG to Ruby code
+
+Usage:
+  victor to-ruby SVG_FILE [RUBY_FILE --template NAME]
+  victor to-ruby (-h|--help)
+
+Options:
+  -t, --template NAME
+    Name of the Ruby template to use. Can be:
+      standalone   a full standalone Ruby script
+      dsl          a Victor DSL script
+      cli          a Victor CLI compatible DSL script (default)
+
+  -h --help
+    Show this help
+
+Parameters:
+  SVG_FILE
+    Input SVG file
+
+  RUBY_FILE
+    Output Ruby file. Leave empty to write to stdout
+
+Examples:
+  victor to-ruby example.svg example.rb
