@@ -7,7 +7,7 @@ Usage:
 Options:
   -t, --template TEMPLATE
     Set SVG template
-    Can be: default, html, minimal or a file path
+    Can be: default, html, minimal, or a file path
 
   -h --help
     Show this help

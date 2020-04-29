@@ -8,7 +8,7 @@ module Victor
         usage "victor to-svg (-h|--help)"
 
         option '-t, --template TEMPLATE', "Set SVG template\n"+
-          "Can be: default, html, minimal or a file path"
+          "Can be: default, html, minimal, or a file path"
 
         param "RUBY_FILE", "Input Ruby file"
         param "SVG_FILE", "Output SVG file. Leave empty to write to stdout"
