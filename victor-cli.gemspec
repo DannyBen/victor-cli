@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'victor', '~> 0.3'
   s.add_runtime_dependency "nokogiri", "~> 1.10"
   s.add_runtime_dependency "rufo", "~> 0.12"
+  s.add_runtime_dependency "pretty_trace", "~> 0.2"
 end
