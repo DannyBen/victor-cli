@@ -1,10 +1,12 @@
 # Render this template by running 'ruby FILE' or 'victor to-svg FILE'
 
-require "victor"
+require 'victor/script'
 
-svg = Victor::SVG.new %{attributes}
-svg.build do
+setup %{attributes}
+
+build do
   %{nodes}
 end
 
-svg.save "generated"
+puts render
+save 'output'

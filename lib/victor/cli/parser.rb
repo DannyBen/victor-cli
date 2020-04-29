@@ -3,17 +3,18 @@ require "nokogiri"
 module Victor
   module CLI
     class Parser
+      attr_reader :raw_svg
+
       def initialize(raw_svg)
         @raw_svg = raw_svg
       end
 
       def parse
-        parse_node(svg_root)
+        parse_node svg_root
       end
 
-      private
+    private
 
-      attr_reader :raw_svg
 
       def parse_node(node)
         case node
@@ -52,7 +53,7 @@ module Victor
       end
 
       def xml_doc
-        Nokogiri::XML(raw_svg)
+        Nokogiri::XML raw_svg
       end
 
       def svg_root
