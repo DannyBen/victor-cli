@@ -3,24 +3,25 @@ require "rufo"
 module Victor
   module CLI
     class CodeGenerator
-      def initialize(svg_tree)
+      attr_reader :svg_tree, :format
+
+      def initialize(svg_tree, format: :cli)
         @svg_tree = svg_tree
+        @format = format
       end
 
       def generate
         Rufo::Formatter.format(code_for_node(svg_tree))
       end
 
-      private
-
-      attr_reader :svg_tree
+    private
 
       def code_for_node(node)
         case node.first
         when "svg"
-          root_to_ruby(node)
+          root_to_ruby node
         else
-          node_to_ruby(node)
+          node_to_ruby node
         end
       end
 
@@ -47,18 +48,41 @@ module Victor
       end
 
       def root_to_ruby(node)
-        _, attrs, children = node
-        <<~RUBY
-          require "victor"
+        values = { attributes: node[1], children: node[2] }
 
-          svg = Victor::SVG.new #{attrs_to_ruby(attrs)}
-          svg.build do
-            #{nodes_to_ruby(children)}
-          end
+        template(:standalone) % values
 
-          svg.save "generated"
-        RUBY
+        # case format
+        # when :standalone
+        #   standalone_template children
+        # when :dsl
+        #   dsl_template children
+        # else # :cli
+        #   cli_template children
+        # end
       end
+
+      def template(name)
+        filename = File.join templates_path, "#{name}.rb"
+        File.read filename
+      end
+
+      def templates_path
+        @templates_path ||= File.expand_path "templates", __dir__
+      end
+
+      # def standalone_template
+      #   <<~RUBY
+      #     require "victor"
+
+      #     svg = Victor::SVG.new #{attrs_to_ruby(attrs)}
+      #     svg.build do
+      #       #{nodes_to_ruby(children)}
+      #     end
+
+      #     svg.save "generated"
+      #   RUBY
+      # end
     end
   end
 end
