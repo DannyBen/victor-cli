@@ -1,0 +1,3 @@
+Usage:
+  victor init RUBY_FILE [--template TEMPLATE]
+  victor init (-h|--help)

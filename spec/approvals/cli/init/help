@@ -1,0 +1,23 @@
+Create a sample Victor Ruby script
+
+Usage:
+  victor init RUBY_FILE [--template TEMPLATE]
+  victor init (-h|--help)
+
+Options:
+  -t, --template NAME
+    Name of the Ruby template to use. Can be:
+      standalone   a full standalone Ruby script
+      dsl          a Victor DSL script
+      cli          a Victor CLI compatible DSL script (default)
+
+  -h --help
+    Show this help
+
+Parameters:
+  RUBY_FILE
+    Output Ruby file
+
+Examples:
+  victor init ghost.rb
+  victor init ghost.rb --template standalone
