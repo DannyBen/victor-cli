@@ -16,4 +16,4 @@ svg.build do
 end
 
 puts svg.render
-svg.save "ghost"
+svg.save "%{basename}"

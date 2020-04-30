@@ -20,8 +20,10 @@ module Victor
         def run
           filename = args["RUBY_FILE"]
           template = args['--template'] || 'cli'
+          basename = File.basename filename, '.rb'
+          vars = { filename: filename, basename: basename }
 
-          content = template_content(template) % { filename: filename }
+          content = template_content(template) % vars
 
           File.write filename, content
           say "Saved #{filename}"

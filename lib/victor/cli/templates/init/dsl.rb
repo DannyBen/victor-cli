@@ -16,4 +16,4 @@ build do
 end
 
 puts render
-save "ghost"
+save "%{basename}"
