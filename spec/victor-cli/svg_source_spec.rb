@@ -1,14 +1,24 @@
 require "spec_helper"
 
-describe CodeGenerator do
+describe SVGSource do
   subject { described_class.new svg_tree }
   let(:svg_tree) do
     ["svg", { "a" => "b" }, [["rect", { "x" => "10" }, []]]]
   end
 
-  describe "#generate" do
+  describe "#initialize" do
+    context "with a string input" do
+      let(:svg_tree) { '<svg><g><rect x="10" /></g></svg>' }
+      
+      it "parses the string to obtain the svg tree" do
+        expect(subject.ruby_code).to match_fixture('svg_source/string-input.rb')
+      end
+    end
+  end
+
+  describe "#ruby_code" do
     it "converts the svg tree into ruby code" do
-      expect(subject.generate).to match_fixture('code_generator/basic.rb')
+      expect(subject.ruby_code).to match_fixture('svg_source/basic.rb')
     end
 
     context "with nested nodes" do
@@ -17,7 +27,7 @@ describe CodeGenerator do
       end
 
       it "converts the svg tree into ruby code" do
-        expect(subject.generate).to match_fixture('code_generator/nested-nodes.rb')
+        expect(subject.ruby_code).to match_fixture('svg_source/nested-nodes.rb')
       end
     end
 
@@ -25,7 +35,7 @@ describe CodeGenerator do
       subject { described_class.new svg_tree, template: :dsl }
 
       it "uses the dsl ruby template" do
-        expect(subject.generate).to match_fixture('code_generator/dsl-template.rb')
+        expect(subject.ruby_code).to match_fixture('svg_source/dsl-template.rb')
       end
     end
 
@@ -33,7 +43,7 @@ describe CodeGenerator do
       subject { described_class.new svg_tree, template: :standalone }
 
       it "uses the dsl ruby template" do
-        expect(subject.generate).to match_fixture('code_generator/standalone-template.rb')
+        expect(subject.ruby_code).to match_fixture('svg_source/standalone-template.rb')
       end
     end
 
@@ -41,7 +51,7 @@ describe CodeGenerator do
       subject { described_class.new svg_tree, template: :no_such_template }
 
       it "raises an error" do
-        expect { subject.generate }.to raise_fixture('code_generator/invalid-template')
+        expect { subject.ruby_code }.to raise_fixture('svg_source/invalid-template')
       end      
     end
   end

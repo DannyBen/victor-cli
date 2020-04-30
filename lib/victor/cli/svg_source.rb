@@ -2,16 +2,17 @@ require "rufo"
 
 module Victor
   module CLI
-    class CodeGenerator
+    class SVGSource
       attr_reader :svg_tree, :template
 
       def initialize(svg_tree, template: nil)
         @svg_tree = svg_tree
+        @svg_tree = Parser.new(@svg_tree).parse if @svg_tree.is_a? String
         @template = template || :cli
       end
 
-      def generate
-        Rufo::Formatter.format(code_for_node(svg_tree))
+      def ruby_code
+        @ruby_code ||= Rufo::Formatter.format(code_for_node(svg_tree))
       end
 
     private
