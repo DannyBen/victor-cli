@@ -19,10 +19,13 @@ module Victor
 
         def run
           filename = args["RUBY_FILE"]
+          filename += ".rb" unless filename.end_with? '.rb'
           template = args['--template'] || 'cli'
+
+          raise "File already exists #{filename}" if File.exist? filename
+
           basename = File.basename filename, '.rb'
           vars = { filename: filename, basename: basename }
-
           content = template_content(template) % vars
 
           File.write filename, content

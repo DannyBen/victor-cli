@@ -29,6 +29,15 @@ describe "victor init" do
         .to match_fixture('cli/init/generated-default.rb')
     end
 
+    context "when the file exists" do
+      before { File.write ruby_file, 'dummy' }
+
+      it "aborts gracefully" do
+        expect { subject.run %W[init #{ruby_file}] }
+          .to raise_fixture('cli/init/file-exist')
+      end
+    end
+
     context "with --template NAME" do
       it "saves using the requested template" do
         expect { subject.run %W[init #{ruby_file} --template standalone] }
