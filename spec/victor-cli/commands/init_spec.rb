@@ -29,6 +29,16 @@ describe "victor init" do
         .to match_fixture('cli/init/generated-default.rb')
     end
 
+    context "when the file does not have .rb extension" do
+      let(:ruby_file) { 'spec/tmp/ghost' }
+      before { File.unlink "#{ruby_file}.rb" if File.exist? "#{ruby_file}.rb" }
+
+      it "adds it" do
+        expect { subject.run %W[init #{ruby_file}] }
+          .to output_fixture('cli/init/save')
+      end
+    end
+
     context "when the file exists" do
       before { File.write ruby_file, 'dummy' }
 

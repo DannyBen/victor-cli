@@ -18,10 +18,6 @@ module Victor
         example "victor init ghost.rb --template standalone"
 
         def run
-          filename = args["RUBY_FILE"]
-          filename += ".rb" unless filename.end_with? '.rb'
-          template = args['--template'] || 'cli'
-
           raise "File already exists #{filename}" if File.exist? filename
 
           basename = File.basename filename, '.rb'
@@ -39,6 +35,18 @@ module Victor
         end
 
       private
+
+        def filename
+          @filename ||= if args["RUBY_FILE"].end_with? '.rb'
+            args["RUBY_FILE"]
+          else
+            args['RUBY_FILE'] + ".rb"
+          end
+        end
+
+        def template
+          @template ||= args['--template'] || 'cli'
+        end
 
         def template_content(name)
           filename = File.join templates_path, "#{name}.rb"
