@@ -16,7 +16,41 @@ Command line interface for [Victor][victor], the SVG Library.
 
 ## Usage
 
-### Convert SVG to Ruby
+### `init`: Create a sample Ruby file
+
+Run this command to create an initial sample file:
+
+```shell
+$ victor init example
+```
+
+### `to-svg`: Convert Ruby to SVG
+
+Given this Ruby code:
+
+```ruby
+# example.rb
+setup width: 140, height: 100
+
+build do
+  circle cx: 50, cy: 50, r: 30, fill: "yellow"
+end
+```
+
+Run this command:
+```shell
+$ victor to-svg example.rb --template minimal
+```
+
+To generate this code:
+
+```xml
+<svg width="140" height="100">
+  <circle cx="50" cy="50" r="30" fill="yellow"/>
+</svg>
+```
+
+### `to-ruby`: Convert SVG to Ruby
 
 Given this SVG file:
 
@@ -43,33 +77,6 @@ build do
 end
 
 ```
-
-### Convert Ruby to SVG
-
-Given this Ruby code:
-
-```ruby
-# example.rb
-setup width: 140, height: 100
-
-build do
-  circle cx: 50, cy: 50, r: 30, fill: "yellow"
-end
-```
-
-Run this command:
-```shell
-$ victor to-svg example.rb --template minimal
-```
-
-To generate this code:
-
-```xml
-<svg width="140" height="100">
-  <circle cx="50" cy="50" r="30" fill="yellow"/>
-</svg>
-```
-
 ---
 
 [victor]: https://github.com/DannyBen/victor
