@@ -4,6 +4,7 @@ require 'pretty_trace/enable-trim'
 
 include Colsole
 PrettyTrace.filter [/gem/, /lib/, /bin\/victor/]
+PrettyTrace.debug_tip
 
 router = Victor::CLI::CommandLine.router
 exit router.run ARGV

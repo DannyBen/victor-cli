@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "filewatcher", "~> 1.1"
   s.add_runtime_dependency "nokogiri", "~> 1.10"
-  s.add_runtime_dependency "pretty_trace", "~> 0.2"
+  s.add_runtime_dependency "pretty_trace", "~> 0.2.5"
   s.add_runtime_dependency "requires", "~> 0.2"
   s.add_runtime_dependency "rufo", "~> 0.12"
   s.add_runtime_dependency 'colsole', '~> 0.7'
