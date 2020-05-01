@@ -15,7 +15,6 @@ module Victor
 
     private
 
-
       def parse_node(node)
         case node
         when Nokogiri::XML::Comment

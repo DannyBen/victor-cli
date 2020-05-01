@@ -31,6 +31,14 @@ describe SVGSource do
       end
     end
 
+    context "with text nodes and css" do
+      let(:svg_tree) { File.read 'spec/fixtures/text-nodes-and-css.svg' }
+
+      it "converts the svg tree into ruby code" do
+        expect(subject.ruby_code).to match_fixture('svg_source/text-nodes-and-css.rb')
+      end
+    end
+
     context "with dsl template" do
       subject { described_class.new svg_tree, template: :dsl }
 
