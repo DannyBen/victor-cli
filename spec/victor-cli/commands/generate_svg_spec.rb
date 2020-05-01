@@ -22,6 +22,18 @@ describe "victor to-svg" do
     end
   end
 
+  context "with RUBY_FILE --watch" do
+    it "generates immediately and on change" do
+      expect do
+        expect_any_instance_of(Filewatcher).to receive(:watch) do |watcher, &block|
+          block.call
+        end
+
+        subject.run %W[to-svg #{ruby_file} --watch]
+      end.to output_fixture('cli/to-svg/watch')
+    end
+  end
+
   context "with RUBY_FILE SVG_FILE" do
     let(:svg_file) { 'spec/tmp/svg.svg' }
     before { File.unlink svg_file if File.exist? svg_file }
