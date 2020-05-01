@@ -1,6 +1,6 @@
 module Victor
   module CLI
-    class RubyCode
+    class RubySource
       include Victor::DSL
       attr_reader :code
 

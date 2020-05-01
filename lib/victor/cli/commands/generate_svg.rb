@@ -22,15 +22,15 @@ module Victor
           template = args['--template']
           code = File.read ruby_file
 
-          ruby_code = RubyCode.new code
-          ruby_code.evaluate
-          ruby_code.template template if template
+          ruby_source = RubySource.new code
+          ruby_source.evaluate
+          ruby_source.template template if template
           
           if svg_file
-            ruby_code.svg.save svg_file
+            ruby_source.svg.save svg_file
             say "Saved #{svg_file}"
           else
-            puts ruby_code.svg.render
+            puts ruby_source.svg.render
           end
         end
       end

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe RubyCode do
+describe RubySource do
   subject { described_class.new code }
   let(:code) { "puts 'hello'" }
 
@@ -13,7 +13,7 @@ describe RubyCode do
   end
 
   describe "#evaluate" do
-    it "evaluate the ruby code" do
+    it "evaluates the ruby code" do
       expect { subject.evaluate }.to output("hello\n").to_stdout
     end
   end
@@ -36,7 +36,7 @@ describe RubyCode do
         let(:template_file) { "no-such-template.svg" }
 
         it "raises a friendly error" do
-          expect { subject.template template_file }.to raise_fixture('ruby_code/invalid-template')
+          expect { subject.template template_file }.to raise_fixture('ruby_source/invalid-template')
         end        
       end
     end
