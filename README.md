@@ -24,7 +24,7 @@ Run this command to create an initial sample file:
 $ victor init example
 ```
 
-### `to-svg`: Convert Ruby to SVG
+### `render`: Render Ruby to SVG
 
 Given this Ruby code:
 
@@ -39,7 +39,7 @@ end
 
 Run this command:
 ```shell
-$ victor to-svg example.rb --template minimal
+$ victor render example.rb --template minimal
 ```
 
 To generate this code:
@@ -50,7 +50,7 @@ To generate this code:
 </svg>
 ```
 
-### `to-ruby`: Convert SVG to Ruby
+### `convert`: Convert SVG to Ruby
 
 Given this SVG file:
 
@@ -64,7 +64,7 @@ Given this SVG file:
 Run this command:
 
 ```shell
-$ victor to-ruby example.svg
+$ victor convert example.svg
 ```
 
 To generate this Ruby code:

@@ -28,7 +28,7 @@ module Victor
           say "Saved #{filename}"
           
           if template == 'cli'
-            say %Q[Run !txtblu!victor to-svg "#{filename}"!txtrst! to render]
+            say %Q[Run !txtblu!victor render "#{filename}"!txtrst! to render]
           else
             say %Q[Run !txtblu!ruby "#{filename}"!txtrst! to render]
           end

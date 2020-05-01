@@ -1,5 +1,5 @@
 # Render this by running:
-# victor to-svg "spec/tmp/ghost.rb"
+# victor render "spec/tmp/ghost.rb"
 
 setup viewBox: "0 0 100 100"
 

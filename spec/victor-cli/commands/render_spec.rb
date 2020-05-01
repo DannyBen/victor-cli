@@ -1,24 +1,24 @@
 require "spec_helper"
 
-describe "victor to-svg" do
+describe "victor render" do
   subject { CommandLine.router }
   let(:ruby_file) { 'spec/fixtures/pacman-dsl.rb' }
 
   context "without arguments" do
     it "shows short usage" do
-      expect { subject.run %w[to-svg] }.to output_fixture("cli/to-svg/usage")
+      expect { subject.run %w[render] }.to output_fixture("cli/render/usage")
     end
   end
 
   context "with --help" do
     it "shows long usage" do
-      expect { subject.run %w[to-svg --help] }.to output_fixture("cli/to-svg/help")
+      expect { subject.run %w[render --help] }.to output_fixture("cli/render/help")
     end
   end
 
   context "with RUBY_FILE" do
     it "outputs the converted SVG code to stdout" do
-      expect { subject.run ["to-svg", ruby_file] }.to output_fixture('cli/to-svg/svg-code.svg')
+      expect { subject.run ["render", ruby_file] }.to output_fixture('cli/render/svg-code.svg')
     end
   end
 
@@ -29,8 +29,8 @@ describe "victor to-svg" do
           block.call
         end
 
-        subject.run %W[to-svg #{ruby_file} --watch]
-      end.to output_fixture('cli/to-svg/watch')
+        subject.run %W[render #{ruby_file} --watch]
+      end.to output_fixture('cli/render/watch')
     end
   end
 
@@ -39,15 +39,15 @@ describe "victor to-svg" do
     before { File.unlink svg_file if File.exist? svg_file }
 
     it "saves the converted SVG code" do
-      expect { subject.run ["to-svg", ruby_file, svg_file] }.to output_fixture('cli/to-svg/save')
-      expect(File.read(svg_file) + "\n").to match_fixture('cli/to-svg/svg-code.svg')
+      expect { subject.run ["render", ruby_file, svg_file] }.to output_fixture('cli/render/save')
+      expect(File.read(svg_file) + "\n").to match_fixture('cli/render/svg-code.svg')
     end
   end
 
   context "with RUBY_FILE --template TEMPLATE" do
     context "when TEMPLATE is a built in name" do
       it "uses the correct template" do
-        expect { subject.run %W[to-svg #{ruby_file} -t minimal] }.to output_fixture('cli/to-svg/minimal-template.svg')
+        expect { subject.run %W[render #{ruby_file} -t minimal] }.to output_fixture('cli/render/minimal-template.svg')
       end
     end
 
@@ -55,7 +55,7 @@ describe "victor to-svg" do
       let(:template_file) { 'spec/fixtures/template.svg' }
 
       it "uses the correct template" do
-        expect { subject.run %W[to-svg #{ruby_file} -t #{template_file}] }.to output_fixture('cli/to-svg/custom-template.svg')
+        expect { subject.run %W[render #{ruby_file} -t #{template_file}] }.to output_fixture('cli/render/custom-template.svg')
       end
     end
   end

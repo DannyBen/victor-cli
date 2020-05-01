@@ -2,5 +2,5 @@ Victor SVG Utilities
 
 Commands:
   init     Create a sample Victor Ruby script
-  to-ruby  Convert SVG to Ruby code
-  to-svg   Convert Ruby code to SVG
+  convert  Convert SVG to Ruby code
+  render   Render Ruby code to SVG
