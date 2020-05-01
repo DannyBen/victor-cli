@@ -1,14 +1,18 @@
+require 'filewatcher'
+
 module Victor
   module CLI
     module Commands
       class GenerateSVG < Base
         summary "Convert Ruby code to SVG"
 
-        usage "victor to-svg RUBY_FILE [SVG_FILE --template TEMPLATE]"
+        usage "victor to-svg RUBY_FILE [SVG_FILE] [options]"
         usage "victor to-svg (-h|--help)"
 
         option '-t, --template TEMPLATE', "Set SVG template\n"+
           "Can be: default, html, minimal, or a file path"
+
+        option '-w, --watch', 'Watch the source file and regenerate on change'
 
         param "RUBY_FILE", "Input Ruby file"
         param "SVG_FILE", "Output SVG file. Leave empty to write to stdout"
@@ -17,9 +21,16 @@ module Victor
         example "victor to-svg input.rb --template minimal"
 
         def run
-          ruby_file = args["RUBY_FILE"]
-          svg_file = args["SVG_FILE"]
-          template = args['--template']
+          if args['--watch']
+            watch { generate }
+          else
+            generate
+          end
+        end
+
+      private
+
+        def generate
           code = File.read ruby_file
 
           ruby_source = RubySource.new code
@@ -32,6 +43,29 @@ module Victor
           else
             puts ruby_source.svg.render
           end
+        end
+
+        def watch
+          say "Watching #{ruby_file} for changes"
+          file_watcher.watch do |file, event|
+            yield unless event == :deleted
+          end
+        end
+
+        def file_watcher
+          @file_watcher ||= Filewatcher.new(ruby_file, immediate: true)
+        end
+
+        def ruby_file
+          args["RUBY_FILE"]
+        end
+
+        def svg_file
+          args["SVG_FILE"]
+        end
+        
+        def template
+          args['--template']
         end
       end
     end
