@@ -4,6 +4,6 @@ setup
 
 build do
   g do
-    rect x: "10"
+    rect x: 10
   end
 end

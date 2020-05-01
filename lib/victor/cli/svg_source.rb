@@ -3,6 +3,7 @@ require "rufo"
 module Victor
   module CLI
     class SVGSource
+      using Refinements
       attr_reader :svg_tree, :template
 
       def initialize(svg_tree, template: nil)
@@ -38,14 +39,15 @@ module Victor
       end
 
       def nodes_to_ruby(nodes)
-        nodes.map(&method(:code_for_node)).join("\n")
+        nodes.map do |node|
+          code_for_node node
+        end.join "\n"
       end
 
       def attrs_to_ruby(attrs)
-        attrs.reduce([]) do |acc, (k, v)|
-          acc << "#{k.to_sym.inspect[1..-1]}: #{v.inspect}"
-          acc
-        end.join(",")
+        attrs.map do |key, value|
+          "#{key.format_as_key}: #{value.format_as_value}"
+        end.join ', '
       end
 
       def root_to_ruby(node)
