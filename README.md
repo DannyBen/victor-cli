@@ -70,10 +70,10 @@ $ victor convert example.svg
 To generate this Ruby code:
 
 ```ruby
-setup width: "140", height: "100"
+setup width: 140, height: 100
 
 build do
-  circle cx: "50", cy: "50", r: "30", fill: "yellow"
+  circle cx: 50, cy: 50, r: 30, fill: "yellow"
 end
 
 ```
