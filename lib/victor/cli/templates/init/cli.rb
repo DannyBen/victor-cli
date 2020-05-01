@@ -1,5 +1,5 @@
 # Render this by running:
-# victor to-svg "%{filename}"
+# victor render "%{filename}"
 
 setup viewBox: "0 0 100 100"
 

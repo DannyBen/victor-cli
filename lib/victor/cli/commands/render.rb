@@ -3,11 +3,11 @@ require 'filewatcher'
 module Victor
   module CLI
     module Commands
-      class GenerateSVG < Base
-        summary "Convert Ruby code to SVG"
+      class Render < Base
+        summary "Render Ruby code to SVG"
 
-        usage "victor to-svg RUBY_FILE [SVG_FILE] [options]"
-        usage "victor to-svg (-h|--help)"
+        usage "victor render RUBY_FILE [SVG_FILE] [options]"
+        usage "victor render (-h|--help)"
 
         option '-t, --template TEMPLATE', "Set SVG template\n"+
           "Can be: default, html, minimal, or a file path"
@@ -17,8 +17,8 @@ module Victor
         param "RUBY_FILE", "Input Ruby file"
         param "SVG_FILE", "Output SVG file. Leave empty to write to stdout"
 
-        example "victor to-svg input.rb output.svg"
-        example "victor to-svg input.rb --template minimal"
+        example "victor render input.rb output.svg"
+        example "victor render input.rb --template minimal"
 
         def run
           if args['--watch']

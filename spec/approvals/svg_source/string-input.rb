@@ -1,4 +1,4 @@
-# Render this template by running 'victor to-svg FILE'
+# Render this template by running 'victor render FILE'
 
 setup
 

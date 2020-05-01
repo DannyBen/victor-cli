@@ -1,8 +1,8 @@
 Convert SVG to Ruby code
 
 Usage:
-  victor to-ruby SVG_FILE [RUBY_FILE --template NAME]
-  victor to-ruby (-h|--help)
+  victor convert SVG_FILE [RUBY_FILE --template NAME]
+  victor convert (-h|--help)
 
 Options:
   -t, --template NAME
@@ -22,4 +22,4 @@ Parameters:
     Output Ruby file. Leave empty to write to stdout
 
 Examples:
-  victor to-ruby example.svg example.rb
+  victor convert example.svg example.rb

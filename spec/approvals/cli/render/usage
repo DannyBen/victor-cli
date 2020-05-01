@@ -1,0 +1,3 @@
+Usage:
+  victor render RUBY_FILE [SVG_FILE] [options]
+  victor render (-h|--help)

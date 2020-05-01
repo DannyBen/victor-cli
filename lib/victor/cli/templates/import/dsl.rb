@@ -1,4 +1,4 @@
-# Render this template by running 'ruby FILE' or 'victor to-svg FILE'
+# Render this template by running 'ruby FILE' or 'victor render FILE'
 
 require 'victor/script'
 

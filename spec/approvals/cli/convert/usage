@@ -1,0 +1,3 @@
+Usage:
+  victor convert SVG_FILE [RUBY_FILE --template NAME]
+  victor convert (-h|--help)
