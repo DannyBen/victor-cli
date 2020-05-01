@@ -22,6 +22,8 @@ module Victor
         case node.first
         when "svg"
           root_to_ruby node
+        when "_"
+          text_to_ruby node
         else
           node_to_ruby node
         end
@@ -42,6 +44,11 @@ module Victor
         nodes.map do |node|
           code_for_node node
         end.join "\n"
+      end
+
+      def text_to_ruby(node)
+        _, _, content = node
+        "_ #{content.inspect}"
       end
 
       def attrs_to_ruby(attrs)
@@ -77,7 +84,7 @@ module Victor
       def available_templates
         @available_templates ||= Dir["#{templates_path}/*.rb"].map do |path|
           File.basename path, '.rb'
-        end
+        end.sort
       end
     end
   end
