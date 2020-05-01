@@ -46,7 +46,7 @@ module Victor
 
       def attrs_to_ruby(attrs)
         attrs.map do |key, value|
-          "#{key.to_sym.inspect[1..-1]}: #{value.formatted_value}"
+          "#{key.format_as_key}: #{value.format_as_value}"
         end.join ', '
       end
 
