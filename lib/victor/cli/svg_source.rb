@@ -16,23 +16,41 @@ module Victor
         @ruby_code ||= Rufo::Formatter.format(code_for_node(svg_tree))
       end
 
-    private
+      private
 
       def code_for_node(node)
-        case node.first
+        return text_to_ruby node if node.is_a?(XMLText)
+        
+        case node.type
         when "svg"
           root_to_ruby node
+        when "text", "tspan"
+          text_node_to_ruby node
         else
           node_to_ruby node
         end
       end
 
+      def text_node_to_ruby(node)
+        children = node.children
+        if children.length == 1 && children.first.is_a?(XMLText)
+          short_text_to_ruby node
+        else
+          node_to_ruby node
+        end
+      end
+
+      def short_text_to_ruby(node)
+        attrs = node.attributes.empty? ? "" : ",#{attrs_to_ruby(node.attributes)}"
+        inner_text = node.children.first.text
+        "text #{inner_text.inspect} #{attrs}"
+      end
+
       def node_to_ruby(node)
-        name, attrs, children = node
-        code = "#{name} #{attrs_to_ruby(attrs)} "
-        unless children.empty?
+        code = "#{node.type} #{attrs_to_ruby(node.attributes)} "
+        unless node.children.empty?
           code << " do\n"
-          code << nodes_to_ruby(children)
+          code << nodes_to_ruby(node.children)
           code << "\nend\n"
         end
         code
@@ -44,17 +62,20 @@ module Victor
         end.join "\n"
       end
 
+      def text_to_ruby(node)
+        "_ #{node.text.inspect}"
+      end
+
       def attrs_to_ruby(attrs)
         attrs.map do |key, value|
           "#{key.format_as_key}: #{value.format_as_value}"
-        end.join ', '
+        end.join ", "
       end
 
       def root_to_ruby(node)
-        _, attrs, children = node
         values = {
-          attributes: attrs_to_ruby(attrs),
-          nodes: nodes_to_ruby(children)
+          attributes: attrs_to_ruby(node.attributes),
+          nodes: nodes_to_ruby(node.children),
         }
 
         template_content(template) % values
@@ -77,7 +98,7 @@ module Victor
       def available_templates
         @available_templates ||= Dir["#{templates_path}/*.rb"].map do |path|
           File.basename path, '.rb'
-        end
+        end.sort
       end
     end
   end

@@ -8,14 +8,14 @@ describe Parser do
     let(:filename) { 'basic' }
 
     it "converts the svg into a simple tree structure" do
-      expect(subject.parse.inspect).to match_fixture('parser/basic')
+      expect(subject.parse.to_yaml).to match_fixture('parser/basic')
     end
 
     context "with namespaced attributes" do
       let(:filename) { 'namespaced-args' }
 
       it "parses the attributes correctly" do
-        expect(subject.parse.inspect).to match_fixture('parser/namespaced-args')
+        expect(subject.parse.to_yaml).to match_fixture('parser/namespaced-args')
       end
     end
 
@@ -23,7 +23,7 @@ describe Parser do
       let(:filename) { 'text-node' }
 
       it "parses the attributes correctly" do
-        expect(subject.parse.inspect).to match_fixture('parser/text-node')
+        expect(subject.parse.to_yaml).to match_fixture('parser/text-node')
       end
     end
 
@@ -31,7 +31,7 @@ describe Parser do
       let(:filename) { 'style-node' }
 
       it "parses the attributes correctly" do
-        expect(subject.parse.inspect).to match_fixture('parser/style-node')
+        expect(subject.parse.to_yaml).to match_fixture('parser/style-node')
       end
     end
   end

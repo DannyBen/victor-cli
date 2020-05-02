@@ -1,1 +1,10 @@
-["svg", {"a"=>"b"}, [["rect", {"width"=>"30"}, []]]]
+--- !ruby/object:Victor::CLI::XMLNode
+type: svg
+attributes:
+  a: b
+children:
+- !ruby/object:Victor::CLI::XMLNode
+  type: rect
+  attributes:
+    width: '30'
+  children: []
