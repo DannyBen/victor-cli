@@ -37,7 +37,7 @@ describe SVGSource do
       end
     end
 
-    context "with text nodes and css", :focus do
+    context "with text nodes and css" do
       let(:svg_tree) { File.read 'spec/fixtures/text-nodes-and-css.svg' }
 
       it "converts the svg tree into ruby code" do
