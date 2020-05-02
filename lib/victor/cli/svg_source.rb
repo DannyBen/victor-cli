@@ -16,25 +16,23 @@ module Victor
         @ruby_code ||= Rufo::Formatter.format(code_for_node(svg_tree))
       end
 
-    private
+      private
 
       def code_for_node(node)
-        case node.first
+        return text_to_ruby node if node.is_a?(XmlText)
+        case node.type
         when "svg"
           root_to_ruby node
-        when "_"
-          text_to_ruby node
         else
           node_to_ruby node
         end
       end
 
       def node_to_ruby(node)
-        name, attrs, children = node
-        code = "#{name} #{attrs_to_ruby(attrs)} "
-        unless children.empty?
+        code = "#{node.type} #{attrs_to_ruby(node.attributes)} "
+        unless node.children.empty?
           code << " do\n"
-          code << nodes_to_ruby(children)
+          code << nodes_to_ruby(node.children)
           code << "\nend\n"
         end
         code
@@ -47,21 +45,19 @@ module Victor
       end
 
       def text_to_ruby(node)
-        _, _, content = node
-        "_ #{content.inspect}"
+        "_ #{node.cleaned_text.inspect}"
       end
 
       def attrs_to_ruby(attrs)
         attrs.map do |key, value|
           "#{key.format_as_key}: #{value.format_as_value}"
-        end.join ', '
+        end.join ", "
       end
 
       def root_to_ruby(node)
-        _, attrs, children = node
         values = {
-          attributes: attrs_to_ruby(attrs),
-          nodes: nodes_to_ruby(children)
+          attributes: attrs_to_ruby(node.attributes),
+          nodes: nodes_to_ruby(node.children),
         }
 
         template_content(template) % values

@@ -3,13 +3,17 @@ require "spec_helper"
 describe SVGSource do
   subject { described_class.new svg_tree }
   let(:svg_tree) do
-    ["svg", { "a" => "b" }, [["rect", { "x" => "10" }, []]]]
+    XmlNode.new(
+      "svg",
+      { "a" => "b" },
+      [XmlNode.new("rect", { "x" => "10" }, [])]
+    )
   end
 
   describe "#initialize" do
     context "with a string input" do
       let(:svg_tree) { '<svg><g><rect x="10" /></g></svg>' }
-      
+
       it "parses the string to obtain the svg tree" do
         expect(subject.ruby_code).to match_fixture('svg_source/string-input.rb')
       end
@@ -23,7 +27,9 @@ describe SVGSource do
 
     context "with nested nodes" do
       let(:svg_tree) do
-        ["g", { "a" => "b" }, [["rect", { "x" => "10" }, []]]]
+        XmlNode.new(
+          "g", { "a" => "b" }, [XmlNode.new("rect", { "x" => "10" }, [])]
+        )
       end
 
       it "converts the svg tree into ruby code" do

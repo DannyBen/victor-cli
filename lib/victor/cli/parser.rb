@@ -27,18 +27,16 @@ module Victor
       end
 
       def parse_text(node)
-        inner_text = node.text
-        cleaned_text = inner_text.strip
-        return nil unless cleaned_text.length > 0
-        return ["_", {}, cleaned_text]
+        text_node = XmlText.new(node.text)
+        return text_node if text_node.cleaned_text.length > 0
       end
 
       def parse_normal_node(node)
-        [
+        XmlNode.new(
           node.name,
           node_attrs(node),
           node.children.map(&method(:parse_node)).compact,
-        ]
+        )
       end
 
       def node_attrs(node)
