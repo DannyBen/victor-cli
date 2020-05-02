@@ -20,16 +20,21 @@ module Victor
 
       def code_for_node(node)
         return text_to_ruby node if node.is_a?(XMLText)
+        
         case node.type
         when "svg"
           root_to_ruby node
         when "text", "tspan"
-          children = node.children
-          if children.length == 1 && children.first.is_a?(XMLText)
-            short_text_to_ruby node
-          else
-            node_to_ruby node
-          end
+          text_node_to_ruby node
+        else
+          node_to_ruby node
+        end
+      end
+
+      def text_node_to_ruby(node)
+        children = node.children
+        if children.length == 1 && children.first.is_a?(XMLText)
+          short_text_to_ruby node
         else
           node_to_ruby node
         end
