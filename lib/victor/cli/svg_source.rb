@@ -19,13 +19,13 @@ module Victor
       private
 
       def code_for_node(node)
-        return text_to_ruby node if node.is_a?(XmlText)
+        return text_to_ruby node if node.is_a?(XMLText)
         case node.type
         when "svg"
           root_to_ruby node
         when "text", "tspan"
           children = node.children
-          if children.length == 1 && children.first.is_a?(XmlText)
+          if children.length == 1 && children.first.is_a?(XMLText)
             short_text_to_ruby node
           else
             node_to_ruby node
@@ -37,7 +37,7 @@ module Victor
 
       def short_text_to_ruby(node)
         attrs = node.attributes.empty? ? "" : ",#{attrs_to_ruby(node.attributes)}"
-        inner_text = node.children.first.cleaned_text
+        inner_text = node.children.first.text
         "text #{inner_text.inspect} #{attrs}"
       end
 
@@ -58,7 +58,7 @@ module Victor
       end
 
       def text_to_ruby(node)
-        "_ #{node.cleaned_text.inspect}"
+        "_ #{node.text.inspect}"
       end
 
       def attrs_to_ruby(attrs)

@@ -3,10 +3,10 @@ require "spec_helper"
 describe SVGSource do
   subject { described_class.new svg_tree }
   let(:svg_tree) do
-    XmlNode.new(
+    XMLNode.new(
       "svg",
       { "a" => "b" },
-      [XmlNode.new("rect", { "x" => "10" }, [])]
+      [XMLNode.new("rect", { "x" => "10" }, [])]
     )
   end
 
@@ -27,8 +27,8 @@ describe SVGSource do
 
     context "with nested nodes" do
       let(:svg_tree) do
-        XmlNode.new(
-          "g", { "a" => "b" }, [XmlNode.new("rect", { "x" => "10" }, [])]
+        XMLNode.new(
+          "g", { "a" => "b" }, [XMLNode.new("rect", { "x" => "10" }, [])]
         )
       end
 

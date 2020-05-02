@@ -1,13 +1,14 @@
 module Victor
   module CLI
-    class XmlNode
+    class XMLNode
+      attr_reader :type, :attributes, :children
+
       def initialize(type, attributes, children)
         @type = type
         @attributes = attributes
         @children = children
       end
 
-      attr_reader :type, :attributes, :children
     end
   end
 end

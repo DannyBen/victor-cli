@@ -1,1 +1,13 @@
-["svg", {}, [["style", {}, [["_", {}, ".test-class {\n      color: red;\n    }"]]]]]
+--- !ruby/object:Victor::CLI::XMLNode
+type: svg
+attributes: {}
+children:
+- !ruby/object:Victor::CLI::XMLNode
+  type: style
+  attributes: {}
+  children:
+  - !ruby/object:Victor::CLI::XMLText
+    text: |-
+      .test-class {
+            color: red;
+          }

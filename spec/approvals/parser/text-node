@@ -1,1 +1,19 @@
-["svg", {}, [["text", {}, [["_", {}, "You are"], ["tspan", {"font-weight"=>"bold"}, [["_", {}, "not"]]], ["_", {}, "a banana"]]]]]
+--- !ruby/object:Victor::CLI::XMLNode
+type: svg
+attributes: {}
+children:
+- !ruby/object:Victor::CLI::XMLNode
+  type: text
+  attributes: {}
+  children:
+  - !ruby/object:Victor::CLI::XMLText
+    text: You are
+  - !ruby/object:Victor::CLI::XMLNode
+    type: tspan
+    attributes:
+      font-weight: bold
+    children:
+    - !ruby/object:Victor::CLI::XMLText
+      text: not
+  - !ruby/object:Victor::CLI::XMLText
+    text: a banana

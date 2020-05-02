@@ -1,17 +1,11 @@
 module Victor
   module CLI
-    class XmlText
-      def initialize(raw_text)
-        @raw_text = raw_text
+    class XMLText
+      attr_reader :text
+
+      def initialize(text)
+        @text = text.strip
       end
-
-      def cleaned_text
-        raw_text.strip
-      end
-
-      private
-
-      attr_reader :raw_text
     end
   end
 end
