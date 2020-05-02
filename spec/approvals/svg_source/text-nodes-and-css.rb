@@ -11,10 +11,7 @@ build do
   text "with attributes", x: 10, y: 10
   text x: 10, y: 10 do
     _ "with"
-    tspan font_weight: "bold" do
-      _ "block"
-    end
-
+    text "block", font_weight: "bold"
     _ "and attributes"
   end
 end

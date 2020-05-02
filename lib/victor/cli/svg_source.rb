@@ -23,7 +23,7 @@ module Victor
         case node.type
         when "svg"
           root_to_ruby node
-        when "text"
+        when "text", "tspan"
           children = node.children
           if children.length == 1 && children.first.is_a?(XmlText)
             short_text_to_ruby node
