@@ -23,9 +23,22 @@ module Victor
         case node.type
         when "svg"
           root_to_ruby node
+        when "text"
+          children = node.children
+          if children.length == 1 && children.first.is_a?(XmlText)
+            short_text_to_ruby node
+          else
+            node_to_ruby node
+          end
         else
           node_to_ruby node
         end
+      end
+
+      def short_text_to_ruby(node)
+        attrs = node.attributes.empty? ? "" : ",#{attrs_to_ruby(node.attributes)}"
+        inner_text = node.children.first.cleaned_text
+        "text #{inner_text.inspect} #{attrs}"
       end
 
       def node_to_ruby(node)
