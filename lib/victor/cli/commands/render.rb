@@ -33,10 +33,10 @@ module Victor
         def generate
           code = File.read ruby_file
 
-          ruby_source = RubySource.new code
+          ruby_source = RubySource.new code, ruby_file
           ruby_source.evaluate
           ruby_source.template template if template
-          
+
           if svg_file
             ruby_source.svg.save svg_file
             say "Saved #{svg_file}"
@@ -63,7 +63,7 @@ module Victor
         def svg_file
           args["SVG_FILE"]
         end
-        
+
         def template
           args['--template']
         end

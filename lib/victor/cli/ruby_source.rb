@@ -2,14 +2,15 @@ module Victor
   module CLI
     class RubySource
       include Victor::DSL
-      attr_reader :code
+      attr_reader :code, :filename
 
-      def initialize(code)
+      def initialize(code, filename)
         @code = code
+        @filename = filename
       end
 
       def evaluate
-        instance_eval code
+        instance_eval code, filename
       end
 
       def template(template)
