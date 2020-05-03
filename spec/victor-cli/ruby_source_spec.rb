@@ -1,8 +1,9 @@
 require "spec_helper"
 
 describe RubySource do
-  subject { described_class.new code }
+  subject { described_class.new code, filename }
   let(:code) { "puts 'hello'" }
+  let(:filename) { nil }
 
   it "has a Victor::SVG instance" do
     expect(subject.svg).to be_a Victor::SVG
@@ -15,6 +16,15 @@ describe RubySource do
   describe "#evaluate" do
     it "evaluates the ruby code" do
       expect { subject.evaluate }.to output("hello\n").to_stdout
+    end
+
+    context "file contains a relative require" do
+      let(:filename) { "spec/fixtures/with_require.rb" }
+      let(:code) { File.read filename }
+
+      it "evaluates the ruby code with the correct context" do
+        expect { subject.evaluate }.to output("hello from required\n").to_stdout
+      end
     end
   end
 
