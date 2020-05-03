@@ -1,9 +1,0 @@
---- !ruby/object:Victor::CLI::XMLNode
-type: svg
-attributes: {}
-children:
-- !ruby/object:Victor::CLI::XMLNode
-  type: use
-  attributes:
-    xlink:href: "#b"
-  children: []

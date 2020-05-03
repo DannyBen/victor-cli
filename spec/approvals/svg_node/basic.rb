@@ -1,9 +1,7 @@
 # Render this template by running 'victor render FILE'
 
-setup
+setup a: "b"
 
 build do
-  g do
-    rect x: 10
-  end
+  rect width: 30
 end

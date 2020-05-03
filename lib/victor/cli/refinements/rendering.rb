@@ -13,7 +13,7 @@ module Victor
 
       refine String do
         def to_key
-          gsub '-', '_'
+          gsub('-', '_').to_sym.inspect[1..-1]
         end
 
         def to_value

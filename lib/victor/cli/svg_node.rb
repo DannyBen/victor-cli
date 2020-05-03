@@ -26,6 +26,13 @@ module Victor
         @layout = layout || :cli
       end
 
+      # Returns formatted Ruby code
+      def render
+        Rufo::Formatter.format ruby_code
+      rescue Rufo::SyntaxError => e
+        raise ruby_code
+      end
+
       def inspect
         "#<#{self.class} name=#{name}, type=#{type}>"
       end
@@ -55,29 +62,22 @@ module Victor
         @children ||= children!
       end
 
-      # Returns true if the element should be ignored
-      def rejected?
-        (node.text? and node.text.strip.empty?) or type == :junk
-      end
-
-      # Returns formatted Ruby code
-      def render
-        Rufo::Formatter.format ruby_code
-      rescue Rufo::SyntaxError => e
-        raise ruby_code
-      end
-
       # Returns the ruby code, unformatted
       def ruby_code
         erb erb_template
+      end
+
+    private
+
+      # Returns true if the element should be ignored
+      def rejected?
+        (node.text? and node.text.strip.empty?) or type == :junk
       end
 
       # Renders ERB code
       def erb(code)
         ERB.new(code, nil, "%-").result(binding)
       end
-
-    private
 
       # Returns the content of the appropriate ERB tempalte, based on type
       def erb_template
@@ -129,7 +129,10 @@ module Victor
         elsif node.content.is_a? String
           node.content.strip
         else
+          # TODO: do we need this?
+          # :nocov:
           node.content
+          # :nocov:
         end
       end
 

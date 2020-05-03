@@ -19,7 +19,7 @@ describe RubySource do
     end
 
     context "file contains a relative require" do
-      let(:filename) { "spec/fixtures/with_require.rb" }
+      let(:filename) { "spec/fixtures/ruby_source/with_require.rb" }
       let(:code) { File.read filename }
 
       it "evaluates the ruby code with the correct context" do
@@ -35,7 +35,7 @@ describe RubySource do
     end
 
     context "when the template is a filename" do
-      let(:template_file) { "spec/fixtures/template.svg" }
+      let(:template_file) { "spec/fixtures/ruby_source/template.svg" }
 
       it "sets the template on the svg instance" do
         expect(subject.svg).to receive(:template=).with(template_file)
