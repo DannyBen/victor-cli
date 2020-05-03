@@ -16,7 +16,8 @@
   <text x="10" y="10">with attributes</text>
   <text x="10" y="10">
     with
-    <tspan font-weight="bold">block</tspan>
+    <!-- font-weight="bold" - not working yet -->
+    <tspan x="10">block</tspan>
     and attributes
   </text>
 </svg>

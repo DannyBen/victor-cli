@@ -1,3 +1,4 @@
+require 'nokogiri'
 require 'erb'
 require 'rufo'
 
