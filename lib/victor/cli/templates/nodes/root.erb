@@ -1,0 +1,8 @@
+<%= "# :root" if ENV['DEBUG'] -%>
+setup <%= attributes.render %>
+
+build do
+<%- children.each do |child| -%>
+<%= child.render %>
+<%- end -%>
+end

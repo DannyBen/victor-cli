@@ -1,5 +1,6 @@
 require "runfile-tasks"
 require "byebug"
+require 'pretty_trace/enable-trim'
 require_relative 'lib/victor/cli'
 
 title   "Victor Developer Toolbelt"
@@ -15,3 +16,10 @@ action :console, :c do
 end
 
 require_relative 'debug.rb' if File.exist? 'debug.rb'
+
+# TODO: Remove me
+action :demo do
+  svg = File.read 'spec/fixtures/text-nodes-and-css.svg'
+  doc = Victor::CLI::SVGNode.load svg
+  puts doc.render
+end

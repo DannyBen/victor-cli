@@ -1,0 +1,7 @@
+<%= "# :css" if ENV['DEBUG'] -%>
+<%- content.each do |selector, declarations| %>
+css[<%= selector.inspect %>] = {
+  <%- declarations.each do |key, value| -%>
+  <%= key.format_as_key %>: <%= value.format_as_value %>,
+  <%- end -%>}
+<%- end -%>

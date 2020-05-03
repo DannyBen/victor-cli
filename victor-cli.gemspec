@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "requires", "~> 0.2"
   s.add_runtime_dependency "rufo", "~> 0.12"
   s.add_runtime_dependency 'colsole', '~> 0.7'
+  s.add_runtime_dependency 'css_parser', '~> 1.7'
   s.add_runtime_dependency 'mister_bin', '~> 0.7'
   s.add_runtime_dependency 'victor', '~> 0.3'
 end
