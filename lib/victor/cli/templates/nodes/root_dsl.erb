@@ -1,5 +1,7 @@
 <%= "# :root" if ENV['DEBUG'] -%>
-# Render this template by running 'victor render FILE'
+# Render this template by running 'ruby FILE' or 'victor render FILE'
+
+require 'victor/script'
 
 <%- if attributes.any? -%>
 setup <%= attributes.render %>
@@ -10,3 +12,6 @@ build do
 <%= child.render %>
 <%- end -%>
 end
+
+puts render
+save 'output'

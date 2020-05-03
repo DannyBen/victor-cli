@@ -18,10 +18,11 @@ module Victor
         example "victor convert example.svg example.rb"
 
         def run
-          svg_data = File.read(args["SVG_FILE"])
-          svg_source = SVGSource.new svg_data, template: args['--template']
+          svg_file = args["SVG_FILE"]
+          svg_node = SVGNode.load_file svg_file
+          svg_node.layout = args['--template']
 
-          code = svg_source.ruby_code
+          code = svg_node.render
           ruby_file = args["RUBY_FILE"]
 
           if ruby_file

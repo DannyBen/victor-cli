@@ -7,6 +7,12 @@ module Victor
     class SVGNode
       using Rendering
       attr_reader :node
+      attr_accessor :layout
+
+      # Returns a new instance from an SVG file
+      def self.load_file(path)
+        load File.read(path)
+      end
 
       # Returns a new instance from raw SVG string
       def self.load(svg_string)
@@ -80,7 +86,8 @@ module Victor
 
       # Returns the path to the appropriate ERB template, based on type
       def erb_template_file
-        File.expand_path "templates/nodes/#{type}.erb", __dir__
+        file = (type == :root and layout) ? "root_#{layout}" : type
+        File.expand_path "templates/nodes/#{file}.erb", __dir__
       end
 
       # Returns the internal element type

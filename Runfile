@@ -19,7 +19,7 @@ require_relative 'debug.rb' if File.exist? 'debug.rb'
 
 # TODO: Remove me
 action :demo do
-  svg = File.read 'spec/fixtures/text-nodes-and-css.svg'
-  doc = Victor::CLI::SVGNode.load svg
+  svg = 'spec/fixtures/text-nodes-and-css.svg'
+  doc = Victor::CLI::SVGNode.load_file svg
   puts doc.render
 end
