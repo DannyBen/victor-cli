@@ -5,7 +5,7 @@ require 'rufo'
 module Victor
   module CLI
     class SVGNode
-      using Refinements
+      using Rendering
       attr_reader :node
 
       # Returns a new instance from raw SVG string
@@ -112,7 +112,7 @@ module Victor
           value = attr.value
           key = attr.respond_to?(:prefix) ? "#{attr.prefix}:#{name}" : name
           
-          [key.to_sym, value]
+          [key, value]
         end.to_h
       end
 

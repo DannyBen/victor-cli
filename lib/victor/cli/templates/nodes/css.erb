@@ -2,6 +2,6 @@
 <%- content.each do |selector, declarations| %>
 css[<%= selector.inspect %>] = {
   <%- declarations.each do |key, value| -%>
-  <%= key.format_as_key %>: <%= value.format_as_value %>,
+  <%= key.to_key %>: <%= value.to_value %>,
   <%- end -%>}
 <%- end -%>
