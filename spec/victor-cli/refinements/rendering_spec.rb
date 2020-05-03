@@ -24,4 +24,20 @@ describe Rendering do
       end
     end
   end
+
+  describe Hash do
+    subject {{ 
+      width: 10, 
+      "x" => "30", 
+      "font-weight" => "bold", 
+      font_family: "arial"
+    }}
+
+    describe '#render' do
+      it "returns a valid ruby hash string" do 
+        expect(subject.render)
+          .to eq 'width: 10, x: 30, font_weight: "bold", font_family: "arial"'
+      end
+    end
+  end
 end
