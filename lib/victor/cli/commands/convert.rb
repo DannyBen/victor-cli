@@ -22,7 +22,7 @@ module Victor
           template = args['--template']
           svg_node = SVGNode.load_file svg_file, layout: template
 
-          validate_template template
+          validate_template template if template
 
           code = svg_node.render
           ruby_file = args["RUBY_FILE"]
@@ -36,7 +36,7 @@ module Victor
         end
 
         def validate_template(template)
-          allowed = %w[cli del standalone]
+          allowed = %w[cli dsl standalone]
           unless allowed.include? template
             raise "Template not found #{template}\nAvailable templates: #{allowed.join ', '}"
           end
