@@ -19,8 +19,10 @@ module Victor
 
         def run
           svg_file = args["SVG_FILE"]
-          svg_node = SVGNode.load_file svg_file
-          svg_node.layout = args['--template']
+          template = args['--template']
+          svg_node = SVGNode.load_file svg_file, layout: template
+
+          validate_template template
 
           code = svg_node.render
           ruby_file = args["RUBY_FILE"]
@@ -30,6 +32,13 @@ module Victor
             say "Saved #{ruby_file}"
           else
             puts code
+          end
+        end
+
+        def validate_template(template)
+          allowed = %w[cli del standalone]
+          unless allowed.include? template
+            raise "Template not found #{template}\nAvailable templates: #{allowed.join ', '}"
           end
         end
       end

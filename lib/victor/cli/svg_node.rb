@@ -6,24 +6,24 @@ module Victor
   module CLI
     class SVGNode
       using Rendering
-      attr_reader :node
-      attr_accessor :layout
+      attr_reader :node, :layout
 
       # Returns a new instance from an SVG file
-      def self.load_file(path)
-        load File.read(path)
+      def self.load_file(path, layout: nil)
+        load File.read(path), layout: layout
       end
 
       # Returns a new instance from raw SVG string
-      def self.load(svg_string)
+      def self.load(svg_string, layout: nil)
         doc = Nokogiri::XML svg_string
         root = doc.children.last
-        new root
+        new root, layout: layout
       end
 
       # Initializes with a Nokogiri XML node
-      def initialize(node)
+      def initialize(node, layout: nil)
         @node = node
+        @layout = layout || :cli
       end
 
       def inspect
@@ -86,8 +86,8 @@ module Victor
 
       # Returns the path to the appropriate ERB template, based on type
       def erb_template_file
-        file = (type == :root and layout) ? "root_#{layout}" : type
-        File.expand_path "templates/nodes/#{file}.erb", __dir__
+        file = type == :root ? "root_#{layout}" : type
+        path = File.expand_path "templates/nodes/#{file}.erb", __dir__
       end
 
       # Returns the internal element type
