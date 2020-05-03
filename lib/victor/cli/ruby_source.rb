@@ -4,13 +4,17 @@ module Victor
       include Victor::DSL
       attr_reader :code, :filename
 
-      def initialize(code, filename)
+      def initialize(code, filename = nil)
         @code = code
         @filename = filename
       end
 
       def evaluate
-        instance_eval code, filename
+        if filename
+          instance_eval code, filename
+        else
+          instance_eval code
+        end
       end
 
       def template(template)
