@@ -13,7 +13,7 @@ build do
 
   text "without attributes"
 
-  text "with attributes", x: 10, y: 10
+  text "with attributes", x: 10, y: 10, font_weight: "bold"
 
   text x: 10, y: 10 do
     _ "with"

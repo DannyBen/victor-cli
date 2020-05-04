@@ -23,6 +23,15 @@ describe Rendering do
         expect("12.3".to_value).to eq "12.3"
       end
     end
+
+    describe '#style_to_hash' do
+      subject { "font-weight: bold; top: 10px; left: 20" }
+      
+      it "converts a style string to a hash" do
+        expect(subject.style_to_hash)
+          .to eq({ "font-weight"=>"bold", "left"=>"20", "top"=>"10px" })
+      end
+    end
   end
 
   describe Hash do
