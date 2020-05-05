@@ -1,2 +1,0 @@
-#<RuntimeError: Template not found no_such_template
-Available templates: cli, dsl, standalone>

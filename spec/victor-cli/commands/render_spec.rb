@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "victor render" do
   subject { CommandLine.router }
-  let(:ruby_file) { 'spec/fixtures/pacman-dsl.rb' }
+  let(:ruby_file) { 'spec/fixtures/render/pacman-dsl.rb' }
 
   context "without arguments" do
     it "shows short usage" do
@@ -52,7 +52,7 @@ describe "victor render" do
     end
 
     context "when TEMPLATE is a path to file" do
-      let(:template_file) { 'spec/fixtures/template.svg' }
+      let(:template_file) { 'spec/fixtures/render/template.svg' }
 
       it "uses the correct template" do
         expect { subject.run %W[render #{ruby_file} -t #{template_file}] }.to output_fixture('cli/render/custom-template.svg')

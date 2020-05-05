@@ -15,7 +15,7 @@ describe 'bin/victor' do
 
   describe 'render' do
     context "when there is a syntax error in the user script" do
-      let(:script) { "spec/fixtures/syntax-error.rb" }
+      let(:script) { "spec/fixtures/bin/syntax-error.rb" }
 
       it "errors gracefuly with backtrace info" do
         # cannot use fixture here, since output varies between rubies
@@ -25,7 +25,7 @@ describe 'bin/victor' do
     end
 
     context "when there is any other error in the user script" do
-      let(:script) { "spec/fixtures/other-error.rb" }
+      let(:script) { "spec/fixtures/bin/other-error.rb" }
 
       it "errors gracefuly with backtrace info" do
         # cannot use fixture here, since output varies between rubies

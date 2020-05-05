@@ -18,10 +18,13 @@ module Victor
         example "victor convert example.svg example.rb"
 
         def run
-          svg_data = File.read(args["SVG_FILE"])
-          svg_source = SVGSource.new svg_data, template: args['--template']
+          svg_file = args["SVG_FILE"]
+          template = args['--template']
+          svg_node = SVGNode.load_file svg_file, layout: template
 
-          code = svg_source.ruby_code
+          validate_template template if template
+
+          code = svg_node.render
           ruby_file = args["RUBY_FILE"]
 
           if ruby_file
@@ -29,6 +32,13 @@ module Victor
             say "Saved #{ruby_file}"
           else
             puts code
+          end
+        end
+
+        def validate_template(template)
+          allowed = %w[cli dsl standalone]
+          unless allowed.include? template
+            raise "Template not found #{template}\nAvailable templates: #{allowed.join ', '}"
           end
         end
       end

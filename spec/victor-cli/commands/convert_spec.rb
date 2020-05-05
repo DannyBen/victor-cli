@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "victor convert" do
   subject { CommandLine.router }
-  let(:svg_file) { 'spec/fixtures/pacman.svg' }
+  let(:svg_file) { 'spec/fixtures/convert/pacman.svg' }
 
   context "without arguments" do
     it "shows short usage" do
@@ -36,6 +36,12 @@ describe "victor convert" do
     it "uses the specified template name" do
       expect { subject.run %W[convert #{svg_file} --template dsl] }
         .to output_fixture('cli/convert/template-dsl')
+    end
+
+    context "when the template NAME is invalid" do
+      it "raises a friendly error" do
+        expect { subject.run %W[convert #{svg_file} --template invalid] }
+          .to raise_fixture('cli/convert/invalid-template')      end
     end
   end
 end

@@ -1,17 +1,23 @@
 <svg>
   <style type="text/css">
     <![CDATA[
+      * {
+        fill: yellow;
+      }
       .main {
         stroke: green;
+        stroke-width: 2;
+        opacity: 0.7;
       }
     ]]>
   </style>
 
   <text>without attributes</text>
-  <text x="10" y="10">with attributes</text>
+  <text x="10" y="10" font-weight="bold">with attributes</text>
   <text x="10" y="10">
     with
     <tspan font-weight="bold">block</tspan>
     and attributes
   </text>
+
 </svg>

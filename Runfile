@@ -1,5 +1,6 @@
 require "runfile-tasks"
 require "byebug"
+require 'pretty_trace/enable-trim'
 require_relative 'lib/victor/cli'
 
 title   "Victor Developer Toolbelt"
