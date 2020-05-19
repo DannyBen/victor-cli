@@ -6,14 +6,14 @@ describe "victor init" do
   context "without arguments" do
     it "shows short usage" do
       expect { subject.run %w[init] }
-        .to output_fixture("cli/init/usage")
+        .to output_approval("cli/init/usage")
     end
   end
 
   context "with --help" do
     it "shows long usage" do
       expect { subject.run %w[init --help] }
-        .to output_fixture("cli/init/help")
+        .to output_approval("cli/init/help")
     end
   end
 
@@ -23,10 +23,10 @@ describe "victor init" do
 
     it "saves a sample" do
       expect { subject.run %W[init #{ruby_file}] }
-        .to output_fixture('cli/init/save')
+        .to output_approval('cli/init/save')
 
       expect(File.read ruby_file)
-        .to match_fixture('cli/init/generated-default.rb')
+        .to match_approval('cli/init/generated-default.rb')
     end
 
     context "when the file does not have .rb extension" do
@@ -35,7 +35,7 @@ describe "victor init" do
 
       it "adds it" do
         expect { subject.run %W[init #{ruby_file}] }
-          .to output_fixture('cli/init/save')
+          .to output_approval('cli/init/save')
       end
     end
 
@@ -44,23 +44,23 @@ describe "victor init" do
 
       it "aborts gracefully" do
         expect { subject.run %W[init #{ruby_file}] }
-          .to raise_fixture('cli/init/file-exist')
+          .to raise_approval('cli/init/file-exist')
       end
     end
 
     context "with --template NAME" do
       it "saves using the requested template" do
         expect { subject.run %W[init #{ruby_file} --template standalone] }
-          .to output_fixture('cli/init/save-standalone')
+          .to output_approval('cli/init/save-standalone')
         
         expect(File.read ruby_file)
-          .to match_fixture('cli/init/generated-standalone.rb')
+          .to match_approval('cli/init/generated-standalone.rb')
       end
 
       context "when the template is invalid" do
         it "raises an error" do
           expect { subject.run %W[init #{ruby_file} --template not-found] }
-            .to raise_fixture('cli/init/invalid-template')
+            .to raise_approval('cli/init/invalid-template')
         end
       end
     end

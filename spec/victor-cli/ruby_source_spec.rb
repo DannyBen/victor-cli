@@ -46,7 +46,7 @@ describe RubySource do
         let(:template_file) { "no-such-template.svg" }
 
         it "raises a friendly error" do
-          expect { subject.template template_file }.to raise_fixture('ruby_source/invalid-template')
+          expect { subject.template template_file }.to raise_approval('ruby_source/invalid-template')
         end        
       end
     end

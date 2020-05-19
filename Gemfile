@@ -5,7 +5,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem 'lp'
 gem 'byebug'
 gem 'rspec'
-gem 'rspec_fixtures'
+gem 'rspec_approvals'
 gem 'runfile'
 gem 'runfile-tasks'
 gem 'simplecov'

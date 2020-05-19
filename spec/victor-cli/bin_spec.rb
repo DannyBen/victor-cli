@@ -4,12 +4,12 @@ describe 'bin/victor' do
   subject { CommandLine.router }
 
   it "shows list of commands" do
-    expect{ subject.run }.to output_fixture('cli/commands')
+    expect{ subject.run }.to output_approval('cli/commands')
   end
 
   context "on exception" do
     it "errors gracefuly" do
-      expect(`bin/victor convert no-such-file 2>&1`).to match_fixture('cli/exception')
+      expect(`bin/victor convert no-such-file 2>&1`).to match_approval('cli/exception')
     end
   end
 

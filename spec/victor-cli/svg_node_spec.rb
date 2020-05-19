@@ -13,7 +13,7 @@ describe SVGNode do
   describe '#render' do
     context "with basic SVG" do
       it "works" do
-        expect(subject.render).to match_fixture('svg_node/basic.rb')
+        expect(subject.render).to match_approval('svg_node/basic.rb')
       end
     end
 
@@ -21,7 +21,7 @@ describe SVGNode do
       let(:file) { "namespaced-attributes" }
       
       it "works" do
-        expect(subject.render).to match_fixture('svg_node/namespaced-attributes.rb')
+        expect(subject.render).to match_approval('svg_node/namespaced-attributes.rb')
       end
     end
 
@@ -29,7 +29,7 @@ describe SVGNode do
       let(:file) { "advanced" }
       
       it "works" do
-        expect(subject.render).to match_fixture('svg_node/advanced.rb')
+        expect(subject.render).to match_approval('svg_node/advanced.rb')
       end
     end
 
@@ -37,7 +37,7 @@ describe SVGNode do
       let(:file) { "broken" }
       
       it "raises an errpr" do
-        expect { subject.render }.to raise_fixture('svg_node/broken')
+        expect { subject.render }.to raise_approval('svg_node/broken')
       end
     end
   end
