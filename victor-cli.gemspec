@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables = ['victor']
   s.homepage    = 'https://github.com/dannyben/victor-cli'
   s.license     = 'MIT'
-  s.required_ruby_version = ">= 2.4.0"
+  s.required_ruby_version = ">= 2.6.0"
 
   s.add_runtime_dependency "filewatcher", "~> 1.1"
   s.add_runtime_dependency "nokogiri", "~> 1.10"
