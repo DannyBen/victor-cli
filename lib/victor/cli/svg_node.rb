@@ -76,7 +76,7 @@ module Victor
 
       # Renders ERB code
       def erb(code)
-        ERB.new(code, nil, "%-").result(binding)
+        ERB.new(code, trim_mode: '%-').result(binding)
       end
 
       # Returns the content of the appropriate ERB tempalte, based on type
