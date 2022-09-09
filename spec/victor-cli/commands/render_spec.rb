@@ -26,7 +26,8 @@ describe "victor render" do
     it "generates immediately and on change" do
       expect do
         expect_any_instance_of(Filewatcher).to receive(:watch) do |watcher, &block|
-          block.call
+          changes = { "some-path" => :updated }
+          block.call changes
         end
 
         subject.run %W[render #{ruby_file} --watch]
