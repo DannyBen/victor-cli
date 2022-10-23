@@ -56,7 +56,7 @@ module Victor
         end
 
         def watch_and_generate
-          watch do            
+          watch do
             generate
           rescue Exception => e
             say! "!undred!#{e.class}!txtrst!\n#{e.message}"

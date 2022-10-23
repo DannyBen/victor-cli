@@ -33,6 +33,22 @@ describe "victor render" do
         subject.run %W[render #{ruby_file} --watch]
       end.to output_approval('cli/render/watch')
     end
+
+    context "when the script contains an error" do
+      it "shows it gracefully and continues to watch" do
+        command = Victor::CLI::Commands::Render
+        expect do
+          expect_any_instance_of(command).to receive(:watch) do |watcher, &block|
+            expect_any_instance_of(command).to receive(:generate) do
+              raise Exception, "Intentional error"
+            end
+            changes = { "some-path" => :updated }
+            block.call changes
+          end
+          subject.run %W[render #{ruby_file} --watch]
+        end.to output_approval('cli/render/watch-error').to_stderr
+      end
+    end
   end
 
   context "with RUBY_FILE SVG_FILE" do
