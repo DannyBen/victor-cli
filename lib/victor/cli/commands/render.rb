@@ -18,11 +18,12 @@ module Victor
         param "SVG_FILE", "Output SVG file. Leave empty to write to stdout"
 
         example "victor render input.rb output.svg"
+        example "victor render input.rb output.svg --watch"
         example "victor render input.rb --template minimal"
 
         def run
           if args['--watch']
-            watch { generate }
+            watch_and_generate
           else
             generate
           end
@@ -51,6 +52,14 @@ module Victor
             changes.each do |path, event|
               yield unless event == :deleted
             end
+          end
+        end
+
+        def watch_and_generate
+          watch do            
+            generate
+          rescue Exception => e
+            say! "!undred!#{e.class}!txtrst!\n#{e.message}"
           end
         end
 

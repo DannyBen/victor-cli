@@ -24,4 +24,5 @@ Parameters:
 
 Examples:
   victor render input.rb output.svg
+  victor render input.rb output.svg --watch
   victor render input.rb --template minimal
