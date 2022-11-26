@@ -45,8 +45,11 @@ describe 'victor init' do
       before { File.write ruby_file, 'dummy' }
 
       it 'aborts gracefully' do
+        # Different Ruby versions show exception slightly differently
+        # Hence the diff
         expect { subject.run %W[init #{ruby_file}] }
           .to raise_approval('cli/init/file-exist')
+          .diff(4)
       end
     end
 
@@ -61,8 +64,11 @@ describe 'victor init' do
 
       context 'when the template is invalid' do
         it 'raises an error' do
+          # Different Ruby versions show exception slightly differently
+          # Hence the diff
           expect { subject.run %W[init #{ruby_file} --template not-found] }
             .to raise_approval('cli/init/invalid-template')
+            .diff(4)
         end
       end
     end

@@ -47,7 +47,11 @@ describe RubySource do
         let(:template_file) { 'no-such-template.svg' }
 
         it 'raises a friendly error' do
-          expect { subject.template template_file }.to raise_approval('ruby_source/invalid-template')
+          # Different Ruby versions show exception slightly differently
+          # Hence the diff
+          expect { subject.template template_file }
+            .to raise_approval('ruby_source/invalid-template')
+            .diff(4)
         end
       end
     end

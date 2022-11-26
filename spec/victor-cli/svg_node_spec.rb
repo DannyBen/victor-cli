@@ -38,7 +38,10 @@ describe SVGNode do
       let(:file) { 'broken' }
 
       it 'raises an errpr' do
+        # Different Ruby versions show exception slightly differently
+        # Hence the diff
         expect { subject.render }.to raise_approval('svg_node/broken')
+          .diff(4)
       end
     end
   end
