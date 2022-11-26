@@ -42,8 +42,11 @@ describe 'victor convert' do
 
     context 'when the template NAME is invalid' do
       it 'raises a friendly error' do
+        # Different Ruby versions show exception slightly differently
+        # Hence the diff
         expect { subject.run %W[convert #{svg_file} --template invalid] }
           .to raise_approval('cli/convert/invalid-template')
+          .diff(4)
       end
     end
   end
