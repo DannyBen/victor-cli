@@ -1,4 +1,4 @@
-require "css_parser"
+require 'css_parser'
 
 module Victor
   module CLI
@@ -19,9 +19,6 @@ module Victor
       def parser
         @parser ||= CssParser::Parser.new
       end
-
     end
   end
 end
-
-
