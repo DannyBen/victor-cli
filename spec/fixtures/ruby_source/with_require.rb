@@ -1,1 +1,1 @@
-require_relative "required"
+require_relative 'required'

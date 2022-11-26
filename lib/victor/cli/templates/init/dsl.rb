@@ -2,7 +2,7 @@
 # ruby "%{filename}"
 require 'victor/script'
 
-setup viewBox: "0 0 100 100"
+setup viewBox: '0 0 100 100'
 
 build do
   circle cx: 50, cy: 50, r: 40, fill: 'yellow'
@@ -12,8 +12,8 @@ build do
     circle cx: x, cy: 40, r: 8, fill: 'white'
   end
 
-  path d: "M11 100 l13 -15 l13 15 l13 -15 l13 15 l13 -15 l13 15 Z", fill: 'white'
+  path d: 'M11 100 l13 -15 l13 15 l13 -15 l13 15 l13 -15 l13 15 Z', fill: 'white'
 end
 
 puts render
-save "%{basename}"
+save '%{basename}'

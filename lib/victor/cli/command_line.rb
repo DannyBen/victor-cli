@@ -6,7 +6,7 @@ module Victor
     class CommandLine
       def self.router
         router = MisterBin::Runner.new version: VERSION,
-          header: "Victor SVG Utilities"
+          header: 'Victor SVG Utilities'
 
         router.route 'init',    to: Commands::Init
         router.route 'convert', to: Commands::Convert
@@ -15,6 +15,5 @@ module Victor
         router
       end
     end
-
   end
 end

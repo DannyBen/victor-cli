@@ -29,7 +29,7 @@ module Victor
       # Returns formatted Ruby code
       def render
         Rufo::Formatter.format ruby_code
-      rescue Rufo::SyntaxError => e
+      rescue Rufo::SyntaxError
         raise ruby_code
       end
 
@@ -87,7 +87,7 @@ module Victor
       # Returns the path to the appropriate ERB template, based on type
       def erb_template_file
         file = type == :root ? "root_#{layout}" : type
-        path = File.expand_path "templates/nodes/#{file}.erb", __dir__
+        File.expand_path "templates/nodes/#{file}.erb", __dir__
       end
 
       # Returns the internal element type
@@ -114,13 +114,13 @@ module Victor
 
       # Returns a hash of attributes
       def attributes!
-        node.attribute_nodes.map do |attr|
+        node.attribute_nodes.to_h do |attr|
           name = attr.name
           value = attr.value
           key = attr.respond_to?(:prefix) ? "#{attr.prefix}:#{name}" : name
-          
+
           [key, value]
-        end.to_h
+        end
       end
 
       def content!
@@ -135,7 +135,6 @@ module Victor
           # :nocov:
         end
       end
-
     end
   end
 end

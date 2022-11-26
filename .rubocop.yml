@@ -1,0 +1,29 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+inherit_gem:
+  rentacop:
+    - rentacop.yml
+    - rspec.yml
+
+AllCops:
+  TargetRubyVersion: 2.7
+  Exclude:
+    - debug.rb
+    - 'dev/**/*'
+    - 'spec/approvals/**/*'
+    - 'spec/tmp/**/*'
+    # This file contains errors on purpose
+    - spec/fixtures/bin/syntax-error.rb
+    - spec/fixtures/bin/other-error.rb
+
+# Allow useless assignments in some test cases
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/fixtures/**/*'
+
+# Hashes have mixed key types here on purpose
+Style/HashSyntax:
+  Exclude:
+    - spec/victor-cli/refinements/rendering_spec.rb

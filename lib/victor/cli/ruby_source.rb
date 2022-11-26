@@ -32,7 +32,6 @@ module Victor
       def built_in_templates
         %w[default minimal html]
       end
-
     end
   end
 end

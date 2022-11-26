@@ -4,22 +4,24 @@ module Victor
   module CLI
     module Commands
       class Render < Base
-        summary "Render Ruby code to SVG"
+        summary 'Render Ruby code to SVG'
 
-        usage "victor render RUBY_FILE [SVG_FILE] [options]"
-        usage "victor render (-h|--help)"
+        usage 'victor render RUBY_FILE [SVG_FILE] [options]'
+        usage 'victor render (-h|--help)'
 
-        option '-t, --template TEMPLATE', "Set SVG template\n"+
-          "Can be: default, html, minimal, or a file path"
+        option '-t, --template TEMPLATE', <<~USAGE
+          Set SVG template
+          Can be: default, html, minimal, or a file path
+        USAGE
 
         option '-w, --watch', 'Watch the source file and regenerate on change'
 
-        param "RUBY_FILE", "Input Ruby file"
-        param "SVG_FILE", "Output SVG file. Leave empty to write to stdout"
+        param 'RUBY_FILE', 'Input Ruby file'
+        param 'SVG_FILE', 'Output SVG file. Leave empty to write to stdout'
 
-        example "victor render input.rb output.svg"
-        example "victor render input.rb output.svg --watch"
-        example "victor render input.rb --template minimal"
+        example 'victor render input.rb output.svg'
+        example 'victor render input.rb output.svg --watch'
+        example 'victor render input.rb --template minimal'
 
         def run
           if args['--watch']
@@ -49,7 +51,7 @@ module Victor
         def watch
           say "Watching #{ruby_file} for changes"
           file_watcher.watch do |changes|
-            changes.each do |path, event|
+            changes.each do |_path, event|
               yield unless event == :deleted
             end
           end
@@ -58,7 +60,7 @@ module Victor
         def watch_and_generate
           watch do
             generate
-          rescue Exception => e
+          rescue => e
             say! "!undred!#{e.class}!txtrst!\n#{e.message}"
           end
         end
@@ -68,11 +70,11 @@ module Victor
         end
 
         def ruby_file
-          args["RUBY_FILE"]
+          args['RUBY_FILE']
         end
 
         def svg_file
-          args["SVG_FILE"]
+          args['SVG_FILE']
         end
 
         def template

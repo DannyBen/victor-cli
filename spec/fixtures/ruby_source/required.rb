@@ -1,1 +1,1 @@
-puts "hello from required"
+puts 'hello from required'
