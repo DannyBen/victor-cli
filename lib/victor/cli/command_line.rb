@@ -1,5 +1,6 @@
 require 'mister_bin'
-requires 'commands/base', 'commands'
+requires 'commands/base'
+requires 'commands'
 
 module Victor
   module CLI
