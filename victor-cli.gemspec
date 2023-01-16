@@ -15,14 +15,14 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.required_ruby_version = '>= 2.7.0'
 
-  s.add_runtime_dependency 'colsole', '~> 0.7'
+  s.add_runtime_dependency 'colsole', '~> 0.7.2'
   s.add_runtime_dependency 'css_parser', '~> 1.7'
   s.add_runtime_dependency 'filewatcher', '~> 2.0'
-  s.add_runtime_dependency 'mister_bin', '~> 0.7'
+  s.add_runtime_dependency 'mister_bin', '~> 0.7.3'
   s.add_runtime_dependency 'nokogiri', '~> 1.10'
   s.add_runtime_dependency 'pretty_trace', '~> 0.2.5'
   s.add_runtime_dependency 'requires', '~> 1.0'
   s.add_runtime_dependency 'rufo', '~> 0.12'
-  s.add_runtime_dependency 'victor', '~> 0.3'
+  s.add_runtime_dependency 'victor', '~> 0.3.4'
   s.metadata['rubygems_mfa_required'] = 'true'
 end
