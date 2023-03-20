@@ -61,7 +61,7 @@ module Victor
           watch do
             generate
           rescue => e
-            say! "!undred!#{e.class}!txtrst!\n#{e.message}"
+            say! "ru`#{e.class}`\n#{e.message}"
           end
         end
 

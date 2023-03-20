@@ -30,9 +30,9 @@ module Victor
           say "Saved #{filename}"
 
           if template == 'cli'
-            say %[Run !txtblu!victor render "#{filename}"!txtrst! to render]
+            say %[Run b`victor render "#{filename}"` to render]
           else
-            say %[Run !txtblu!ruby "#{filename}"!txtrst! to render]
+            say %[Run b`ruby "#{filename}"` to render]
           end
         end
 
