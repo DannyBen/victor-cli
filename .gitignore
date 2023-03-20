@@ -4,5 +4,5 @@
 /dev
 /gems
 /Gemfile.lock
-/debug.rb
+/debug.runfile
 *.gem
