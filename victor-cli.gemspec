@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'requires', '~> 1.0'
   s.add_runtime_dependency 'rufo', '~> 0.12'
   s.add_runtime_dependency 'victor', '~> 0.3'
-  
+
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/victor-cli/issues',
     'changelog_uri'         => 'https://github.com/DannyBen/victor-cli/blob/master/CHANGELOG.md',
