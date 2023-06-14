@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.executables = ['victor']
   s.homepage    = 'https://github.com/dannyben/victor-cli'
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 2.7.0'
+  s.required_ruby_version = '>= 3.0.0'
 
   s.add_runtime_dependency 'colsole', '>= 0.8.1', '< 2.0'
   s.add_runtime_dependency 'css_parser', '~> 1.7'
@@ -24,5 +24,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'requires', '~> 1.0'
   s.add_runtime_dependency 'rufo', '~> 0.12'
   s.add_runtime_dependency 'victor', '~> 0.3'
-  s.metadata['rubygems_mfa_required'] = 'true'
+  
+  s.metadata = {
+    'bug_tracker_uri'       => 'https://github.com/DannyBen/victor-cli/issues',
+    'changelog_uri'         => 'https://github.com/DannyBen/victor-cli/blob/master/CHANGELOG.md',
+    'source_code_uri'       => 'https://github.com/DannyBen/victor-cli',
+    'rubygems_mfa_required' => 'true',
+  }
 end
