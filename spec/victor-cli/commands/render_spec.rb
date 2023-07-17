@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Commands::Render do
   let(:ruby_file) { 'spec/fixtures/render/pacman_dsl.rb' }
   let(:filewatcher) { Filewatcher.new 'path' }

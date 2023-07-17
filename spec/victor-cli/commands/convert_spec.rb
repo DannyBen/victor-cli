@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'victor convert' do
   subject { CommandLine.router }
 

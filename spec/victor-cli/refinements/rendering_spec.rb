@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Rendering do
   using described_class
 

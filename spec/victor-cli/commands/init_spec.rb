@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'victor init' do
   subject { CommandLine.router }
 

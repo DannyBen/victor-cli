@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe SVGNode do
   subject { described_class.load_file "spec/fixtures/svg_node/#{file}.svg" }
 

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'bin/victor' do
   subject { CommandLine.router }
 

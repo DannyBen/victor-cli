@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe RubySource do
   subject { described_class.new code, filename }
 
