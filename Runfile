@@ -1,4 +1,4 @@
-require "byebug"
+require "debug"
 
 title   "Victor Developer Toolbelt"
 import_gem 'runfile-tasks/gem'

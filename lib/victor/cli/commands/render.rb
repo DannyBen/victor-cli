@@ -51,7 +51,7 @@ module Victor
         def watch
           say "Watching #{ruby_file} for changes"
           file_watcher.watch do |changes|
-            changes.each do |_path, event|
+            changes.each_value do |event|
               yield unless event == :deleted
             end
           end
