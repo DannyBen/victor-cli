@@ -1,13 +1,13 @@
 Changelog
 ========================================
 
-Untagged - Latest
+v0.3.8 - 2024-08-25
 ----------------------------------------
 
 - Drop support for Ruby 2.x [`addbbd4`](https://github.com/DannyBen/victor-cli/commit/addbbd4)
 - Update dependencies [`ca1142a`](https://github.com/DannyBen/victor-cli/commit/ca1142a)
 - Drop support for Ruby 3.0 [`709b80e`](https://github.com/DannyBen/victor-cli/commit/709b80e)
-- Compare [`v0.3.7..HEAD`](https://github.com/dannyben/victor-cli/compare/v0.3.7..HEAD)
+- Compare [`v0.3.7..v0.3.8`](https://github.com/dannyben/victor-cli/compare/v0.3.7..v0.3.8)
 
 
 v0.3.7 - 2023-03-20
