@@ -53,7 +53,7 @@ describe Commands::Render do
 
     it 'saves the converted SVG code' do
       expect { subject.execute ['render', ruby_file, svg_file] }.to output_approval('cli/render/save')
-      expect("#{File.read(svg_file)}\n").to match_approval('cli/render/svg-code.svg')
+      expect(File.read(svg_file)).to match_approval('cli/render/svg-code.svg')
     end
   end
 

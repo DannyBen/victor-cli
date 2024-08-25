@@ -3,7 +3,7 @@ require 'victor/cli'
 require 'pretty_trace/enable-trim'
 
 include Colsole
-PrettyTrace.filter [/gem/, /lib/, %r{bin/victor}]
+PrettyTrace.filter [/gem/, /lib/, %r{bin/victor}, %r{bin/bundle}]
 PrettyTrace.debug_tip
 
 router = Victor::CLI::CommandLine.router
