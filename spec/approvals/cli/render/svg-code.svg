@@ -1,7 +1,4 @@
-<svg width="140" height="100" style="background:#ddd" 
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
-
+<svg width="140" height="100" style="background:#ddd" xmlns="http://www.w3.org/2000/svg">
 
 <rect x="10" y="10" width="120" height="80" rx="10" fill="#666"/>
 <circle cx="50" cy="50" r="30" fill="yellow"/>
@@ -10,5 +7,4 @@
 <circle cx="80" cy="50" r="4" fill="yellow"/>
 <circle cx="98" cy="50" r="4" fill="yellow"/>
 <circle cx="116" cy="50" r="4" fill="yellow"/>
-
 </svg>

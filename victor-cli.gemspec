@@ -24,6 +24,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'requires', '~> 1.0'
   s.add_dependency 'rufo', '~> 0.12'
   s.add_dependency 'victor', '~> 0.4'
+  
+  # FIXME: Remove when resolved.
+  #        This is a sub-dependency of filewatcher which does not bundle logger.
+  #        ref: https://github.com/filewatcher/filewatcher/pull/272
+  s.add_dependency 'logger', '~> 1.6'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/victor-cli/issues',
