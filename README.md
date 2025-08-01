@@ -1,14 +1,6 @@
 # Victor CLI
 
-[![Gem Version](https://badge.fury.io/rb/victor-cli.svg)](https://badge.fury.io/rb/victor-cli)
-[![Build Status](https://github.com/DannyBen/victor-cli/workflows/Test/badge.svg)](https://github.com/DannyBen/victor-cli/actions?query=workflow%3ATest)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ab7a46b42d268e374ee1/maintainability)](https://codeclimate.com/github/DannyBen/victor-cli/maintainability)
-
----
-
 Command line interface for [Victor][victor], the SVG Library.
-
----
 
 ## Installation
 
