@@ -6,7 +6,7 @@ module Victor
   module CLI
     class CommandLine
       def self.router
-        router = MisterBin::Runner.new version: VERSION,
+        router = MisterBin::Runner.new version: "#{Victor::CLI::VERSION} (victor #{Victor::VERSION})",
           header: 'Victor SVG Utilities'
 
         router.route 'init',    to: Commands::Init
