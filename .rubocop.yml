@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-rspec
   - rubocop-performance
 
@@ -9,10 +9,11 @@ inherit_gem:
 
 AllCops:
   SuggestExtensions: false
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.2
   Exclude:
     - debug.rb
     - 'dev/**/*'
+    - 'tmp/**/*'
     - 'spec/approvals/**/*'
     - 'spec/tmp/**/*'
     # This file contains errors on purpose

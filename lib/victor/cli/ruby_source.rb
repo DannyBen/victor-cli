@@ -2,6 +2,7 @@ module Victor
   module CLI
     class RubySource
       include Victor::DSL
+
       attr_reader :code, :filename, :global_params, :params
 
       def initialize(code, filename: nil, params: nil)

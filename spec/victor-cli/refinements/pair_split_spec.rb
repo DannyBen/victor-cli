@@ -1,7 +1,7 @@
 describe PairSplit do
   using described_class
 
-  subject { ["color=blue", "text=Hello World"] }
+  subject { ['color=blue', 'text=Hello World'] }
 
   describe Array do
     describe '#pair_split' do
