@@ -1,7 +1,7 @@
 Render Ruby code to SVG
 
 Usage:
-  victor render RUBY_FILE [SVG_FILE] [options]
+  victor render RUBY_FILE [options] [PARAMS...]
   victor render (-h|--help)
 
 Options:
@@ -12,6 +12,9 @@ Options:
   -w, --watch
     Watch the source file and regenerate on change
 
+  -o, --save SVG_FILE
+    Save to SVG file instead of printing to stdout
+
   -h --help
     Show this help
 
@@ -19,10 +22,12 @@ Parameters:
   RUBY_FILE
     Input Ruby file
 
-  SVG_FILE
-    Output SVG file. Leave empty to write to stdout
+  PARAMS
+    One or more key=value pairs that will be available in the `params` hash for
+    the Ruby script
 
 Examples:
-  victor render input.rb output.svg
-  victor render input.rb output.svg --watch
+  victor render input.rb -o output.svg
+  victor render input.rb --save output.svg --watch
   victor render input.rb --template minimal
+  victor render input.rb color=black "text=Hello World"

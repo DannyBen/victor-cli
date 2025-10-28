@@ -2,14 +2,17 @@ module Victor
   module CLI
     class RubySource
       include Victor::DSL
-      attr_reader :code, :filename
+      attr_reader :code, :filename, :global_params, :params
 
-      def initialize(code, filename = nil)
+      def initialize(code, filename: nil, params: nil)
         @code = code
         @filename = filename
+        @global_params = params || {}
+        @params = global_params
       end
 
-      def evaluate
+      def evaluate(local_params = nil)
+        @params = local_params || global_params
         if filename
           instance_eval code, filename
         else
