@@ -16,7 +16,15 @@ describe Commands::Render do
 
   context 'with RUBY_FILE' do
     it 'outputs the converted SVG code to stdout' do
-      expect { subject.execute ['render', ruby_file] }.to output_approval('cli/render/svg-code.svg')
+      expect { subject.execute %W[render #{ruby_file}] }
+        .to output_approval('cli/render/svg-code.svg')
+    end
+  end
+
+  context 'with RUBY_FILE PARAMS...' do
+    it 'passes param pairs to the DSL' do
+      expect { subject.execute %W[render #{ruby_file} color=blue] }
+        .to output_approval('cli/render/svg-code-blue.svg')
     end
   end
 
@@ -46,13 +54,15 @@ describe Commands::Render do
     end
   end
 
-  context 'with RUBY_FILE SVG_FILE' do
+  context 'with RUBY_FILE --save SVG_FILE' do
     let(:svg_file) { 'spec/tmp/svg.svg' }
 
     before { File.unlink svg_file if File.exist? svg_file }
 
     it 'saves the converted SVG code' do
-      expect { subject.execute ['render', ruby_file, svg_file] }.to output_approval('cli/render/save')
+      expect { subject.execute %W[render #{ruby_file} --save #{svg_file}] }
+        .to output_approval('cli/render/save')
+
       expect(File.read(svg_file)).to match_approval('cli/render/svg-code.svg')
     end
   end

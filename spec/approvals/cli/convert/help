@@ -1,7 +1,7 @@
 Convert SVG to Ruby code
 
 Usage:
-  victor convert SVG_FILE [RUBY_FILE --template NAME]
+  victor convert SVG_FILE [--save RUBY_FILE --template NAME]
   victor convert (-h|--help)
 
 Options:
@@ -11,15 +11,15 @@ Options:
       dsl          a Victor DSL script
       cli          a Victor CLI compatible DSL script (default)
 
+  -o, --save RUBY_FILE
+    Save to RUBY file instead of printing to stdout
+
   -h --help
     Show this help
 
 Parameters:
-  SVG_FILE
-    Input SVG file
-
   RUBY_FILE
     Output Ruby file. Leave empty to write to stdout
 
 Examples:
-  victor convert example.svg example.rb
+  victor convert example.svg --save example.rb

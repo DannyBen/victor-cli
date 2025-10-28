@@ -4,9 +4,11 @@ module Victor
   module CLI
     module Commands
       class Render < Base
+        using PairSplit
+
         summary 'Render Ruby code to SVG'
 
-        usage 'victor render RUBY_FILE [SVG_FILE] [options]'
+        usage 'victor render RUBY_FILE [options] [PARAMS...]'
         usage 'victor render (-h|--help)'
 
         option '-t, --template TEMPLATE', <<~USAGE
@@ -15,28 +17,33 @@ module Victor
         USAGE
 
         option '-w, --watch', 'Watch the source file and regenerate on change'
+        option '-o, --save SVG_FILE', 'Save to SVG file instead of printing to stdout'
 
         param 'RUBY_FILE', 'Input Ruby file'
-        param 'SVG_FILE', 'Output SVG file. Leave empty to write to stdout'
+        param 'PARAMS', 'One or more key=value pairs that will be available in the `params` hash for the Ruby script'
 
-        example 'victor render input.rb output.svg'
-        example 'victor render input.rb output.svg --watch'
+        example 'victor render input.rb -o output.svg'
+        example 'victor render input.rb --save output.svg --watch'
         example 'victor render input.rb --template minimal'
+        example 'victor render input.rb color=black "text=Hello World"'
 
         def run
-          if args['--watch']
-            watch_and_generate
-          else
-            generate
-          end
+          args['--watch'] ? watch_and_generate : generate
         end
+
+      protected
+
+        def ruby_file = args['RUBY_FILE']
+        def svg_file = args['--save']
+        def template = args['--template']
+        def params = @params ||= args['PARAMS'].pair_split
 
       private
 
         def generate
           code = File.read ruby_file
 
-          ruby_source = RubySource.new code, ruby_file
+          ruby_source = RubySource.new code, filename: ruby_file, params: params
           ruby_source.evaluate
           ruby_source.template template if template
 
@@ -67,18 +74,6 @@ module Victor
 
         def file_watcher
           @file_watcher ||= Filewatcher.new(ruby_file, immediate: true)
-        end
-
-        def ruby_file
-          args['RUBY_FILE']
-        end
-
-        def svg_file
-          args['SVG_FILE']
-        end
-
-        def template
-          args['--template']
         end
       end
     end

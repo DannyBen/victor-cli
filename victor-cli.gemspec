@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.executables = ['victor']
   s.homepage    = 'https://github.com/dannyben/victor-cli'
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 3.1'
+  s.required_ruby_version = '>= 3.2'
 
   s.add_dependency 'colsole', '~> 1.0'
   s.add_dependency 'css_parser', '~> 1.7'
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'requires', '~> 1.0'
   s.add_dependency 'rufo', '~> 0.12'
   s.add_dependency 'victor', '~> 0.4'
-  
+
   # FIXME: Remove when resolved.
   #        This is a sub-dependency of filewatcher which does not bundle logger.
   #        ref: https://github.com/filewatcher/filewatcher/pull/272

@@ -1,5 +1,5 @@
 describe RubySource do
-  subject { described_class.new code, filename }
+  subject { described_class.new code, filename: filename }
 
   let(:code) { "puts 'hello'" }
   let(:filename) { nil }

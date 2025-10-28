@@ -17,17 +17,17 @@ describe 'victor convert' do
 
   context 'with SVG_FILE' do
     it 'outputs the converted ruby code to stdout' do
-      expect { subject.run ['convert', svg_file] }.to output_approval('cli/convert/ruby-code.rb')
+      expect { subject.run %W[convert #{svg_file}] }.to output_approval('cli/convert/ruby-code.rb')
     end
   end
 
-  context 'with SVG_FILE RUBY_FILE' do
+  context 'with SVG_FILE --save RUBY_FILE' do
     let(:ruby_file) { 'spec/tmp/code.rb' }
 
     before { File.unlink ruby_file if File.exist? ruby_file }
 
     it 'saves the converted ruby code' do
-      expect { subject.run ['convert', svg_file, ruby_file] }.to output_approval('cli/convert/save')
+      expect { subject.run %W[convert #{svg_file} --save #{ruby_file}] }.to output_approval('cli/convert/save')
       expect(File.read ruby_file).to match_approval('cli/convert/ruby-code.rb')
     end
   end
