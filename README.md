@@ -24,21 +24,24 @@ Given this Ruby code:
 # example.rb
 setup width: 140, height: 100
 
+# allow changing parameters from the command line
+color = params[:color] || :yellow
+
 build do
-  circle cx: 50, cy: 50, r: 30, fill: "yellow"
+  circle cx: 50, cy: 50, r: 30, fill: color
 end
 ```
 
 Run this command:
 ```shell
-$ victor render example.rb --template minimal
+$ victor render example.rb --template minimal color=blue
 ```
 
 To generate this code:
 
 ```xml
 <svg width="140" height="100">
-  <circle cx="50" cy="50" r="30" fill="yellow"/>
+  <circle cx="50" cy="50" r="30" fill="blue"/>
 </svg>
 ```
 
