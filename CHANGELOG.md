@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v0.4.1 - 2025-10-28
+----------------------------------------
+
+- Fix missing VERSION error [`08e8f5a`](https://github.com/DannyBen/victor-cli/commit/08e8f5a)
+- Compare [`v0.4.0..v0.4.1`](https://github.com/dannyben/victor-cli/compare/v0.4.0..v0.4.1)
+
+
 v0.4.0 - 2025-10-28
 ----------------------------------------
 
