@@ -1,6 +1,14 @@
 Changelog
 ========================================
 
+v0.4.0 - 2025-10-28
+----------------------------------------
+
+- Add support for passing params to `render` command [`aa0f67e`](https://github.com/DannyBen/victor-cli/commit/aa0f67e)
+- Drop support for Ruby 3.1 [`e8fd09e`](https://github.com/DannyBen/victor-cli/commit/e8fd09e)
+- Compare [`v0.3.8..v0.4.0`](https://github.com/dannyben/victor-cli/compare/v0.3.8..v0.4.0)
+
+
 v0.3.8 - 2024-08-25
 ----------------------------------------
 
