@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v0.4.2 - 2026-01-08
+----------------------------------------
+
+- Switch from `filewatcher` to `listen` [`38a136e`](https://github.com/DannyBen/victor-cli/commit/38a136e)
+- Compare [`v0.4.1..v0.4.2`](https://github.com/dannyben/victor-cli/compare/v0.4.1..v0.4.2)
+
+
 v0.4.1 - 2025-10-28
 ----------------------------------------
 
