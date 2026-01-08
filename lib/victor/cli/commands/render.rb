@@ -1,4 +1,4 @@
-require 'filewatcher'
+require 'listen'
 
 module Victor
   module CLI
@@ -56,25 +56,36 @@ module Victor
         end
 
         def watch
-          say "Watching #{ruby_file} for changes"
-          file_watcher.watch do |changes|
-            changes.each_value do |event|
-              yield unless event == :deleted
-            end
+          l = listener do |modified, added, _removed|
+            changes = modified + added
+            yield unless changes.empty?
           end
+          l.start
+          sleep
         end
 
         def watch_and_generate
-          watch do
-            generate
-          rescue => e
-            say! "ru`#{e.class}`\n#{e.message}"
+          say "Watching #{ruby_file} for changes"
+          safe_generate
+          begin
+            watch { safe_generate }
+          rescue Interrupt
+            say "\nGoodbye"
           end
         end
 
-        def file_watcher
-          @file_watcher ||= Filewatcher.new(ruby_file, immediate: true)
+        def safe_generate
+          generate
+        rescue => e
+          say! "ru`#{e.class}`\n#{e.message}"
         end
+
+        def listener(&)
+          Listen.to(ruby_dir, force_polling: true, latency: 3, only: ruby_glob, &)
+        end
+
+        def ruby_dir = @ruby_dir ||= File.dirname(ruby_file)
+        def ruby_glob = @ruby_glob ||= /\A#{Regexp.escape(File.basename(ruby_file))}\z/
       end
     end
   end

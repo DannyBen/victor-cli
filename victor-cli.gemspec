@@ -17,18 +17,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'colsole', '~> 1.0'
   s.add_dependency 'css_parser', '~> 1.7'
-  s.add_dependency 'filewatcher', '~> 2.0'
+  s.add_dependency 'listen', '~> 3.9'
+  s.add_dependency 'logger', '~> 1.7' # required by lietsn
   s.add_dependency 'mister_bin', '~> 0.7'
   s.add_dependency 'nokogiri', '~> 1.10'
   s.add_dependency 'pretty_trace', '~> 0.3'
   s.add_dependency 'requires', '~> 1.0'
   s.add_dependency 'rufo', '~> 0.12'
   s.add_dependency 'victor', '~> 0.4'
-
-  # FIXME: Remove when resolved.
-  #        This is a sub-dependency of filewatcher which does not bundle logger.
-  #        ref: https://github.com/filewatcher/filewatcher/pull/272
-  s.add_dependency 'logger', '~> 1.6'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/victor-cli/issues',
