@@ -1,5 +1,7 @@
 # Victor CLI
 
+![repocard](https://repocard.dannyben.com/svg/victor-cli.svg)
+
 Command line interface for [Victor][victor], the SVG Library.
 
 ## Installation
