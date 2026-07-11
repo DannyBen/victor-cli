@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.2'
 
   s.add_dependency 'colsole', '~> 1.0'
-  s.add_dependency 'css_parser', '~> 1.7'
+  s.add_dependency 'css_parser', '~> 3.0'
   s.add_dependency 'listen', '~> 3.9'
   s.add_dependency 'logger', '~> 1.7' # required by lietsn
   s.add_dependency 'mister_bin', '~> 0.7'
