@@ -29,10 +29,11 @@ describe Commands::Render do
   end
 
   context 'with RUBY_FILE --watch' do
+    before { allow(subject).to receive(:sleep) }
+
     it 'generates immediately and watches for changes' do
-      expect(Listen).to receive(:to).and_return(listener)
+      allow(Listen).to receive(:to).and_return(listener)
       expect(listener).to receive(:start)
-      allow(subject).to receive(:sleep)
 
       expect { subject.execute %W[render #{ruby_file} --watch] }
         .to output_approval('cli/render/watch')
@@ -44,7 +45,6 @@ describe Commands::Render do
         .and_yield(['changed'], [], [])
         .and_return(listener)
       expect(listener).to receive(:start)
-      allow(subject).to receive(:sleep)
 
       count = 0
       subject.send(:watch) { count += 1 }
@@ -58,9 +58,7 @@ describe Commands::Render do
           call_count += 1
           raise 'Intentional error' if call_count == 2
         end
-        expect(subject).to receive(:watch) do |&block|
-          block.call
-        end
+        expect(subject).to receive(:watch).and_yield
 
         expect { subject.execute %W[render #{ruby_file} --watch] }
           .to output_approval('cli/render/watch-error').to_stderr
